@@ -34,6 +34,11 @@
       "label": "External URL",
       "form_snippet": "text.html",
       "form_placeholder": "www.example.com"
+    },
+    {
+      "field_name": "update_frequency",
+      "label": "Dataset Update/Harvest Frequency"
     }
+
   ]
 }

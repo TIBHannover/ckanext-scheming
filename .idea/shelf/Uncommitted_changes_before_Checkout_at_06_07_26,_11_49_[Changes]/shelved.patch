@@ -1,0 +1,32 @@
+Index: .idea/ckanext-scheming.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<module type=\"PYTHON_MODULE\" version=\"4\">\n  <component name=\"NewModuleRootManager\">\n    <content url=\"file://$MODULE_DIR$\">\n      <excludeFolder url=\"file://$MODULE_DIR$/venv\" />\n    </content>\n    <orderEntry type=\"inheritedJdk\" />\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\n  </component>\n  <component name=\"PyDocumentationSettings\">\n    <option name=\"format\" value=\"PLAIN\" />\n    <option name=\"myDocStringFormat\" value=\"Plain\" />\n  </component>\n  <component name=\"TestRunnerService\">\n    <option name=\"PROJECT_TEST_RUNNER\" value=\"py.test\" />\n  </component>\n</module>
+===================================================================
+diff --git a/.idea/ckanext-scheming.iml b/.idea/ckanext-scheming.iml
+--- a/.idea/ckanext-scheming.iml	(revision d2ea8da908dfdb374a84988eb6af91bf2a464ef6)
++++ b/.idea/ckanext-scheming.iml	(date 1762762457329)
+@@ -6,6 +6,7 @@
+     </content>
+     <orderEntry type="inheritedJdk" />
+     <orderEntry type="sourceFolder" forTests="false" />
++    <orderEntry type="module" module-name="ckanext-relationship" />
+   </component>
+   <component name="PyDocumentationSettings">
+     <option name="format" value="PLAIN" />
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ProjectModuleManager\">\n    <modules>\n      <module fileurl=\"file://$PROJECT_DIR$/.idea/ckanext-scheming.iml\" filepath=\"$PROJECT_DIR$/.idea/ckanext-scheming.iml\" />\n    </modules>\n  </component>\n</project>
+===================================================================
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+--- a/.idea/modules.xml	(revision d2ea8da908dfdb374a84988eb6af91bf2a464ef6)
++++ b/.idea/modules.xml	(date 1762762457343)
+@@ -2,6 +2,7 @@
+ <project version="4">
+   <component name="ProjectModuleManager">
+     <modules>
++      <module fileurl="file://$PROJECT_DIR$/../ckanext-relationship/.idea/ckanext-relationship.iml" filepath="$PROJECT_DIR$/../ckanext-relationship/.idea/ckanext-relationship.iml" />
+       <module fileurl="file://$PROJECT_DIR$/.idea/ckanext-scheming.iml" filepath="$PROJECT_DIR$/.idea/ckanext-scheming.iml" />
+     </modules>
+   </component>

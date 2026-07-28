@@ -88,8 +88,26 @@
           h.scheming_language_text(field.label) }}</th>
         <td class="dataset-details"{%
           if field.display_property %} property="{{ field.display_property
-          }}"{% endif %}>{%- snippet 'scheming/snippets/display_field.html',
-          field=field, data=pkg_dict, entity_type=schema -%}</td>
+          }}"{% endif %}>
+          {%- if pkg_dict.type == 'molecule'
+              and field.field_name == 'alternate_name' -%}
+            {%- set alternate_names = h.alternate_names(pkg_dict.id) -%}
+            {%- if alternate_names -%}
+              <ul class="alternate-names">
+                {%- for alternate_name in alternate_names %}
+                <li>{{ alternate_name }}</li>
+                {%- endfor %}
+              </ul>
+            {%- else -%}
+              <span class="text-muted">
+                {{- _('No alternate names available.') -}}
+              </span>
+            {%- endif -%}
+          {%- else -%}
+            {%- snippet 'scheming/snippets/display_field.html',
+              field=field, data=pkg_dict, entity_type=schema -%}
+          {%- endif -%}
+        </td>
       </tr>
     {%- endif -%}
   {%- endfor -%}

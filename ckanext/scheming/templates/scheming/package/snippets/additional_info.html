@@ -91,7 +91,7 @@
           }}"{% endif %}>
           {%- if pkg_dict.type == 'molecule'
               and field.field_name == 'alternate_name' -%}
-            {%- set alternate_names = h.alternate_names(inchi_key) -%}
+            {%- set alternate_names = h.alternate_names(pkg_dict.inchi_key) -%}
             {%- if alternate_names -%}
               <ul class="alternate-names">
                 {%- for alternate_name in alternate_names %}

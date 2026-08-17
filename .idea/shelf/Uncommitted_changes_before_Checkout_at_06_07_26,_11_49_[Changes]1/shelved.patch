@@ -1,0 +1,337 @@
+Index: ckanext/scheming/bioschema4Chem/molecule4chem.yaml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>scheming_version: 2\ndataset_type: molecule\nabout: A reimplementation of the default CKAN molecule schema based on BioSchema.org\nabout_url: https://bioschemas.org/profiles/Dataset/1.0-RELEASE\n\ndataset_fields:\n- field_name: title\n  label: Title\n  preset: title\n  form_placeholder: eg. A descriptive title\n\n- field_name: name\n  label: URL\n  preset: dataset_slug\n  form_placeholder: eg. my-dataset\n\n- field_name: notes\n  label: Description\n  form_snippet: markdown.html\n  form_placeholder: eg. Some useful notes about the data\n\n- field_name: owner_org\n  label: Organization\n  preset: dataset_organization\n\n- field_name: image_url\n  label: Source\n  form_placeholder: http://example.com/dataset.json\n  display_property: foaf:homepage\n  display_snippet: text.html\n\n- field_name: exactmass\n  label: Molecular Weight\n  display_snippet: text.html\n  form_placeholder: ex. 230gms\n\n- field_name: inchi\n  label: InChI\n  display_snippet: text.html\n\n- field_name: inchi_key\n  label: InChIKey\n  display_snippet: text.html\n\n- field_name: smiles\n  label: SMILES\n  display_snippet: text.html\n\n- field_name: iupacName\n  label: IUPAC Name\n  display_snippet: text.html\n\n- field_name: mol_formula\n  label: Molecular Formula\n  display_snippet: text.html\n\n- field_name: alternate_name\n  label: Alternate Name\n  # display_snippet: text.html\n  preset: multiple_text\n\n#- field_name: measurement_technique\n#  label: Measurement Technique\n#  display_snippet: text.html\n#  multiple: true\n#  required: false\n#  facetable: true\n#  filterable: true\n\n# {\n  #    \"field_name\": \"measurement_technique\",\n  #    \"label\": \"Measurement Technique\",\n  #    \"required\": false,\n  #    \"type\": \"list\",\n  #    \"facetable\": true,\n  #    \"filterable\": true\n  #}\n\n\n#- field_name: measurement_technique_iri\n#  label: Measurement Technique IRI\n\n\n#relationship to datasets\n\n- field_name: related_dataset\n  label: Related Dataset\n  preset: related_entity\n  current_entity: package\n  current_entity_type: molecule\n  related_entity: package\n  related_entity_type: dataset\n  relation_type: related_to\n  multiple: true\n  updatable_only: false\n  required: false\n\nresource_fields:\n\n- field_name: url\n  label: URL\n  preset: resource_url_upload\n\n- field_name: name\n  label: Name\n  form_placeholder: eg. January 2011 Gold Prices\n\n- field_name: description\n  label: Description\n  form_snippet: markdown.html\n  form_placeholder: Some useful notes about the data\n\n- field_name: format\n  label: Format\n  preset: resource_format_autocomplete\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ckanext/scheming/bioschema4Chem/molecule4chem.yaml b/ckanext/scheming/bioschema4Chem/molecule4chem.yaml
+--- a/ckanext/scheming/bioschema4Chem/molecule4chem.yaml	(revision d2ea8da908dfdb374a84988eb6af91bf2a464ef6)
++++ b/ckanext/scheming/bioschema4Chem/molecule4chem.yaml	(date 1750750709162)
+@@ -81,6 +81,15 @@
+ #  label: Measurement Technique IRI
+ 
+ 
++#- field_name: measurement_technique_proxy
++#  label: Related Measurement Techniques
++#  solr_include: true
++#  form_include: false
++#  facet_include: true
++#  display_group: hidden
++#  field_type: text
++
++
+ #relationship to datasets
+ 
+ - field_name: related_dataset
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"c495dcf4-ac1b-4735-a93c-6b0a273cccfb\" name=\"Changes\" comment=\"resource_name as a different field\">\n      <change afterPath=\"$PROJECT_DIR$/ckanext/scheming/bioschema4Chem/sample4chem.yaml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/ckanext/scheming/bioschema4Chem/dataset4chem.yaml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/ckanext/scheming/bioschema4Chem/dataset4chem.yaml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/ckanext/scheming/bioschema4Chem/molecule4chem.yaml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/ckanext/scheming/bioschema4Chem/molecule4chem.yaml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/ckanext/scheming/helpers.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/ckanext/scheming/helpers.py\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/ckanext/scheming/templates/base.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/ckanext/scheming/templates/base.html\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/ckanext/scheming/templates/scheming/package/snippets/additional_info.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/ckanext/scheming/templates/scheming/package/snippets/additional_info.html\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"HTML File\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"test-server\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"GitHubPullRequestSearchHistory\">{\n  &quot;lastFilter&quot;: {\n    &quot;state&quot;: &quot;OPEN&quot;,\n    &quot;assignee&quot;: &quot;bhavin2897&quot;\n  }\n}</component>\n  <component name=\"GitSEFilterConfiguration\">\n    <file-type-list>\n      <filtered-out-file-type name=\"LOCAL_BRANCH\" />\n      <filtered-out-file-type name=\"REMOTE_BRANCH\" />\n      <filtered-out-file-type name=\"TAG\" />\n      <filtered-out-file-type name=\"COMMIT_BY_MESSAGE\" />\n    </file-type-list>\n  </component>\n  <component name=\"GithubProjectSettings\">\n    <option name=\"branchProtectionPatterns\">\n      <list>\n        <option value=\"master\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"GithubPullRequestsUISettings\">{\n  &quot;selectedUrlAndAccountId&quot;: {\n    &quot;url&quot;: &quot;https://github.com/bhavin2897/ckanext-scheming.git&quot;,\n    &quot;accountId&quot;: &quot;849dcb34-4f2c-4d7e-bd9c-4840c703f903&quot;\n  }\n}</component>\n  <component name=\"HighlightingSettingsPerFile\">\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/templates/scheming/display_snippets/hyperlink_mT.html\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/templates/base.html\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/assets/styles/scheming.css\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/assets/resource.config\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/assets/webassets.yml\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/templates/scheming/package/snippets/related_identifier.html\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/bioschema4Chem/fancy_type.yaml\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/bioschema4Chem/study4chem.yaml\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/templates/scheming/display_snippets/repeating_subfields.html\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/assets/styles/tooltip-hover.css\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/bioschema4Chem/dataset4chem.yaml\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/templates/scheming/package/snippets/data_page_visuals.html\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/templates/scheming/display_snippets/hyperlink.html\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/bioschema4Chem/project4chem.yaml\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/helpers.py\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/ckan_dataset.yaml\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/templates/scheming/form_snippets/multiple_text.html\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/plugins.py\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/presets.json\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/templates/scheming/snippets/display_field.html\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/templates/scheming/snippets/errors.html\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/templates/scheming/package/snippets/package_form.html\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/templates/snippets/package_item.html\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/templates/scheming/package/snippets/additional_info.html\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/templates/scheming/package/read.html\" root0=\"FORCE_HIGHLIGHTING\" />\n  </component>\n  <component name=\"ProjectColorInfo\">{\n  &quot;customColor&quot;: &quot;&quot;,\n  &quot;associatedIndex&quot;: 2\n}</component>\n  <component name=\"ProjectId\" id=\"24K411XkBzcZeeF63p4GJB9QVaE\" />\n  <component name=\"ProjectLevelVcsManager\">\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\n  </component>\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,\n    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,\n    &quot;git-widget-placeholder&quot;: &quot;master&quot;,\n    &quot;last_opened_file_path&quot;: &quot;/usr/lib/ckan/default/src/ckanext-scheming/ckanext/scheming/public&quot;\n  }\n}</component>\n  <component name=\"RecentsManager\">\n    <key name=\"CopyFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/ckanext/scheming/public\" />\n      <recent name=\"$PROJECT_DIR$/ckanext/scheming/templates/scheming/display_snippets\" />\n      <recent name=\"$PROJECT_DIR$/ckanext/scheming/templates/scheming/form_snippets\" />\n      <recent name=\"$PROJECT_DIR$/ckanext/scheming/templates/scheming/snippets\" />\n      <recent name=\"$PROJECT_DIR$/ckanext/scheming/templates/scheming/package/snippets\" />\n    </key>\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/ckanext/scheming/templates/scheming/snippets\" />\n      <recent name=\"$PROJECT_DIR$/ckanext/scheming/templates/snippets\" />\n      <recent name=\"$PROJECT_DIR$/ckanext/scheming/bioschema4Chem/\" />\n      <recent name=\"$PROJECT_DIR$/ckanext/scheming/BioSchema4Chem/\" />\n    </key>\n  </component>\n  <component name=\"SharedIndexes\">\n    <attachedChunks>\n      <set>\n        <option value=\"bundled-python-sdk-4c141bd692a7-e2d783800521-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-251.26927.90\" />\n      </set>\n    </attachedChunks>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"c495dcf4-ac1b-4735-a93c-6b0a273cccfb\" name=\"Changes\" comment=\"\" />\n      <created>1643365726179</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1643365726179</updated>\n    </task>\n    <task id=\"LOCAL-00093\" summary=\"hid ts url field\">\n      <created>1690532259427</created>\n      <option name=\"number\" value=\"00093\" />\n      <option name=\"presentableId\" value=\"LOCAL-00093\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690532259427</updated>\n    </task>\n    <task id=\"LOCAL-00094\" summary=\"undo hid\">\n      <created>1690532716434</created>\n      <option name=\"number\" value=\"00094\" />\n      <option name=\"presentableId\" value=\"LOCAL-00094\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690532716435</updated>\n    </task>\n    <task id=\"LOCAL-00095\" summary=\"undo hid\">\n      <created>1690535039677</created>\n      <option name=\"number\" value=\"00095\" />\n      <option name=\"presentableId\" value=\"LOCAL-00095\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690535039677</updated>\n    </task>\n    <task id=\"LOCAL-00096\" summary=\"added empty html\">\n      <created>1690535172274</created>\n      <option name=\"number\" value=\"00096\" />\n      <option name=\"presentableId\" value=\"LOCAL-00096\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690535172274</updated>\n    </task>\n    <task id=\"LOCAL-00097\" summary=\"added empty html\">\n      <created>1690535204319</created>\n      <option name=\"number\" value=\"00097\" />\n      <option name=\"presentableId\" value=\"LOCAL-00097\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690535204319</updated>\n    </task>\n    <task id=\"LOCAL-00098\" summary=\"hovertext on hyperlink\">\n      <created>1690536323137</created>\n      <option name=\"number\" value=\"00098\" />\n      <option name=\"presentableId\" value=\"LOCAL-00098\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690536323137</updated>\n    </task>\n    <task id=\"LOCAL-00099\" summary=\"elimnate var_value with text\">\n      <created>1690536429403</created>\n      <option name=\"number\" value=\"00099\" />\n      <option name=\"presentableId\" value=\"LOCAL-00099\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690536429404</updated>\n    </task>\n    <task id=\"LOCAL-00100\" summary=\"label at the dataset list view\">\n      <created>1690549191363</created>\n      <option name=\"number\" value=\"00100\" />\n      <option name=\"presentableId\" value=\"LOCAL-00100\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690549191363</updated>\n    </task>\n    <task id=\"LOCAL-00101\" summary=\"extends missing\">\n      <created>1690549309420</created>\n      <option name=\"number\" value=\"00101\" />\n      <option name=\"presentableId\" value=\"LOCAL-00101\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690549309420</updated>\n    </task>\n    <task id=\"LOCAL-00102\" summary=\"extends missing\">\n      <created>1690549359627</created>\n      <option name=\"number\" value=\"00102\" />\n      <option name=\"presentableId\" value=\"LOCAL-00102\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690549359627</updated>\n    </task>\n    <task id=\"LOCAL-00103\" summary=\"outside scheming html\">\n      <created>1690550289248</created>\n      <option name=\"number\" value=\"00103\" />\n      <option name=\"presentableId\" value=\"LOCAL-00103\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690550289248</updated>\n    </task>\n    <task id=\"LOCAL-00104\" summary=\"ckan extends\">\n      <created>1690550578553</created>\n      <option name=\"number\" value=\"00104\" />\n      <option name=\"presentableId\" value=\"LOCAL-00104\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690550578553</updated>\n    </task>\n    <task id=\"LOCAL-00105\" summary=\"addition and deletion of preset of related_entity\">\n      <created>1690976018320</created>\n      <option name=\"number\" value=\"00105\" />\n      <option name=\"presentableId\" value=\"LOCAL-00105\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690976018321</updated>\n    </task>\n    <task id=\"LOCAL-00106\" summary=\"missing preset\">\n      <created>1690976787609</created>\n      <option name=\"number\" value=\"00106\" />\n      <option name=\"presentableId\" value=\"LOCAL-00106\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690976787609</updated>\n    </task>\n    <task id=\"LOCAL-00107\" summary=\"added missing preset\">\n      <created>1690977908756</created>\n      <option name=\"number\" value=\"00107\" />\n      <option name=\"presentableId\" value=\"LOCAL-00107\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690977908757</updated>\n    </task>\n    <task id=\"LOCAL-00108\" summary=\"added missing preset\">\n      <created>1690978105658</created>\n      <option name=\"number\" value=\"00108\" />\n      <option name=\"presentableId\" value=\"LOCAL-00108\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690978105658</updated>\n    </task>\n    <task id=\"LOCAL-00109\" summary=\"addition of display_snippet as null in additional_table\">\n      <created>1690981344488</created>\n      <option name=\"number\" value=\"00109\" />\n      <option name=\"presentableId\" value=\"LOCAL-00109\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690981344488</updated>\n    </task>\n    <task id=\"LOCAL-00110\" summary=\"repeating subfields UI changes\">\n      <created>1690986341331</created>\n      <option name=\"number\" value=\"00110\" />\n      <option name=\"presentableId\" value=\"LOCAL-00110\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690986341331</updated>\n    </task>\n    <task id=\"LOCAL-00111\" summary=\"test server fancy_type entity\">\n      <created>1690986561318</created>\n      <option name=\"number\" value=\"00111\" />\n      <option name=\"presentableId\" value=\"LOCAL-00111\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690986561318</updated>\n    </task>\n    <task id=\"LOCAL-00112\" summary=\"test server fancy_type entity\">\n      <created>1690986644167</created>\n      <option name=\"number\" value=\"00112\" />\n      <option name=\"presentableId\" value=\"LOCAL-00112\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690986644167</updated>\n    </task>\n    <task id=\"LOCAL-00113\" summary=\"test server fancy_type entity\">\n      <created>1690986668788</created>\n      <option name=\"number\" value=\"00113\" />\n      <option name=\"presentableId\" value=\"LOCAL-00113\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690986668789</updated>\n    </task>\n    <task id=\"LOCAL-00114\" summary=\"test server fancy_type entity\">\n      <created>1690986809811</created>\n      <option name=\"number\" value=\"00114\" />\n      <option name=\"presentableId\" value=\"LOCAL-00114\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690986809811</updated>\n    </task>\n    <task id=\"LOCAL-00115\" summary=\"test server fancy_type entity\">\n      <created>1690986972667</created>\n      <option name=\"number\" value=\"00115\" />\n      <option name=\"presentableId\" value=\"LOCAL-00115\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690986972667</updated>\n    </task>\n    <task id=\"LOCAL-00116\" summary=\"test server fancy_type entity\">\n      <created>1690987448138</created>\n      <option name=\"number\" value=\"00116\" />\n      <option name=\"presentableId\" value=\"LOCAL-00116\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690987448138</updated>\n    </task>\n    <task id=\"LOCAL-00117\" summary=\"reversed\">\n      <created>1690987652869</created>\n      <option name=\"number\" value=\"00117\" />\n      <option name=\"presentableId\" value=\"LOCAL-00117\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690987652869</updated>\n    </task>\n    <task id=\"LOCAL-00118\" summary=\"reversed\">\n      <created>1690987705208</created>\n      <option name=\"number\" value=\"00118\" />\n      <option name=\"presentableId\" value=\"LOCAL-00118\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690987705208</updated>\n    </task>\n    <task id=\"LOCAL-00119\" summary=\"schemas and html changed as per relationship plugin\">\n      <created>1691156153443</created>\n      <option name=\"number\" value=\"00119\" />\n      <option name=\"presentableId\" value=\"LOCAL-00119\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1691156153444</updated>\n    </task>\n    <task id=\"LOCAL-00120\" summary=\"elminated related field and changed on package view\">\n      <created>1691158810217</created>\n      <option name=\"number\" value=\"00120\" />\n      <option name=\"presentableId\" value=\"LOCAL-00120\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1691158810217</updated>\n    </task>\n    <task id=\"LOCAL-00121\" summary=\"testing on server with fancy_type\">\n      <created>1691159131421</created>\n      <option name=\"number\" value=\"00121\" />\n      <option name=\"presentableId\" value=\"LOCAL-00121\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1691159131421</updated>\n    </task>\n    <task id=\"LOCAL-00122\" summary=\"collapse bar for related types with description\">\n      <created>1692104615661</created>\n      <option name=\"number\" value=\"00122\" />\n      <option name=\"presentableId\" value=\"LOCAL-00122\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1692104615661</updated>\n    </task>\n    <task id=\"LOCAL-00123\" summary=\"measuremnt Technique with IRI\">\n      <created>1700480710055</created>\n      <option name=\"number\" value=\"00123\" />\n      <option name=\"presentableId\" value=\"LOCAL-00123\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1700480710055</updated>\n    </task>\n    <task id=\"LOCAL-00124\" summary=\"removed preset\">\n      <created>1700503071835</created>\n      <option name=\"number\" value=\"00124\" />\n      <option name=\"presentableId\" value=\"LOCAL-00124\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1700503071835</updated>\n    </task>\n    <task id=\"LOCAL-00125\" summary=\"undo the last commit\">\n      <created>1700503299045</created>\n      <option name=\"number\" value=\"00125\" />\n      <option name=\"presentableId\" value=\"LOCAL-00125\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1700503299045</updated>\n    </task>\n    <task id=\"LOCAL-00126\" summary=\"bug fix: removing measurement_technique_iri in addt. table\">\n      <created>1713186700538</created>\n      <option name=\"number\" value=\"00126\" />\n      <option name=\"presentableId\" value=\"LOCAL-00126\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1713186700539</updated>\n    </task>\n    <task id=\"LOCAL-00127\" summary=\"hyperlink for iri updated\">\n      <created>1713363556744</created>\n      <option name=\"number\" value=\"00127\" />\n      <option name=\"presentableId\" value=\"LOCAL-00127\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1713363556745</updated>\n    </task>\n    <task id=\"LOCAL-00128\" summary=\"display units for each measurement\">\n      <created>1713785380828</created>\n      <option name=\"number\" value=\"00128\" />\n      <option name=\"presentableId\" value=\"LOCAL-00128\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1713785380829</updated>\n    </task>\n    <task id=\"LOCAL-00129\" summary=\"generate hovertext info and linking to TS\">\n      <created>1715080320800</created>\n      <option name=\"number\" value=\"00129\" />\n      <option name=\"presentableId\" value=\"LOCAL-00129\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1715080320800</updated>\n    </task>\n    <task id=\"LOCAL-00130\" summary=\"generate hovertext info and linking to TS\">\n      <created>1715083200305</created>\n      <option name=\"number\" value=\"00130\" />\n      <option name=\"presentableId\" value=\"LOCAL-00130\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1715083200305</updated>\n    </task>\n    <task id=\"LOCAL-00131\" summary=\"generate hovertext info and linking to TS\">\n      <created>1715085700387</created>\n      <option name=\"number\" value=\"00131\" />\n      <option name=\"presentableId\" value=\"LOCAL-00131\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1715085700387</updated>\n    </task>\n    <task id=\"LOCAL-00132\" summary=\"generate Hoverinfo and ts-url via CURIE\">\n      <created>1715090403180</created>\n      <option name=\"number\" value=\"00132\" />\n      <option name=\"presentableId\" value=\"LOCAL-00132\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1715090403180</updated>\n    </task>\n    <task id=\"LOCAL-00133\" summary=\"generate Hoverinfo and ts-url via CURIE\">\n      <created>1715092424692</created>\n      <option name=\"number\" value=\"00133\" />\n      <option name=\"presentableId\" value=\"LOCAL-00133\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1715092424692</updated>\n    </task>\n    <task id=\"LOCAL-00134\" summary=\"bold text on hoverInfo\">\n      <created>1715598348082</created>\n      <option name=\"number\" value=\"00134\" />\n      <option name=\"presentableId\" value=\"LOCAL-00134\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1715598348082</updated>\n    </task>\n    <task id=\"LOCAL-00135\" summary=\"color coding for curies\">\n      <created>1715611600436</created>\n      <option name=\"number\" value=\"00135\" />\n      <option name=\"presentableId\" value=\"LOCAL-00135\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1715611600436</updated>\n    </task>\n    <task id=\"LOCAL-00136\" summary=\"Reduce line breaks within hover-info\">\n      <created>1715668909438</created>\n      <option name=\"number\" value=\"00136\" />\n      <option name=\"presentableId\" value=\"LOCAL-00136\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1715668909438</updated>\n    </task>\n    <task id=\"LOCAL-00137\" summary=\"measurement Technique takes CURIE\">\n      <created>1715762369452</created>\n      <option name=\"number\" value=\"00137\" />\n      <option name=\"presentableId\" value=\"LOCAL-00137\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1715762369453</updated>\n    </task>\n    <task id=\"LOCAL-00138\" summary=\"Measurement CURIE replaced by short_form\">\n      <created>1715763447076</created>\n      <option name=\"number\" value=\"00138\" />\n      <option name=\"presentableId\" value=\"LOCAL-00138\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1715763447076</updated>\n    </task>\n    <task id=\"LOCAL-00139\" summary=\"measurement technique displayed as colored label\">\n      <created>1716288482149</created>\n      <option name=\"number\" value=\"00139\" />\n      <option name=\"presentableId\" value=\"LOCAL-00139\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1716288482150</updated>\n    </task>\n    <task id=\"LOCAL-00140\" summary=\"hover-text tooltip css line-height\">\n      <created>1717158097601</created>\n      <option name=\"number\" value=\"00140\" />\n      <option name=\"presentableId\" value=\"LOCAL-00140\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1717158097601</updated>\n    </task>\n    <task id=\"LOCAL-00141\" summary=\"hover-text css resource\">\n      <created>1717591542902</created>\n      <option name=\"number\" value=\"00141\" />\n      <option name=\"presentableId\" value=\"LOCAL-00141\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1717591542902</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"160\" />\n    <servers />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\n    <MESSAGE value=\"generate hovertext info and linking to TS\" />\n    <MESSAGE value=\"generate Hoverinfo and ts-url via CURIE\" />\n    <MESSAGE value=\"bold text on hoverInfo\" />\n    <MESSAGE value=\"color coding for curies\" />\n    <MESSAGE value=\"Reduce line breaks within hover-info\" />\n    <MESSAGE value=\"measurement Technique takes CURIE\" />\n    <MESSAGE value=\"Measurement CURIE replaced by short_form\" />\n    <MESSAGE value=\"measurement technique displayed as colored label\" />\n    <MESSAGE value=\"hover-text tooltip css line-height\" />\n    <MESSAGE value=\"hover-text css resource\" />\n    <MESSAGE value=\"addin jquery error\" />\n    <MESSAGE value=\"change ts tib response code\" />\n    <MESSAGE value=\"molecule-data-source tab additional_info.html\" />\n    <MESSAGE value=\"cleaning\" />\n    <MESSAGE value=\"related molecule on package read\" />\n    <MESSAGE value=\"redo ckan_dataset &amp; custom_org_with_address\" />\n    <MESSAGE value=\"new molecule schema &amp; updated dataset schema\" />\n    <MESSAGE value=\"front-end show relation molecule &amp; dataset\" />\n    <MESSAGE value=\"alternate-names as multiple text field\" />\n    <MESSAGE value=\"additional_info added molecule id\" />\n    <MESSAGE value=\"display related datasets on molecule-search page\" />\n    <MESSAGE value=\"molecule title long, else alternate_names\" />\n    <MESSAGE value=\"unstable unichem source error repsonse fix\" />\n    <MESSAGE value=\"resource_url as a different field\" />\n    <MESSAGE value=\"resource_name as a different field\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"resource_name as a different field\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision d2ea8da908dfdb374a84988eb6af91bf2a464ef6)
++++ b/.idea/workspace.xml	(date 1783330825281)
+@@ -4,19 +4,23 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="c495dcf4-ac1b-4735-a93c-6b0a273cccfb" name="Changes" comment="resource_name as a different field">
++    <list default="true" id="c495dcf4-ac1b-4735-a93c-6b0a273cccfb" name="Changes" comment="add: Dataset Update Frequency">
+       <change afterPath="$PROJECT_DIR$/ckanext/scheming/bioschema4Chem/sample4chem.yaml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/ckanext-scheming.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ckanext-scheming.iml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/ckanext/scheming/bioschema4Chem/dataset4chem.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/ckanext/scheming/bioschema4Chem/dataset4chem.yaml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/ckanext/scheming/bioschema4Chem/molecule4chem.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/ckanext/scheming/bioschema4Chem/molecule4chem.yaml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/ckanext/scheming/helpers.py" beforeDir="false" afterPath="$PROJECT_DIR$/ckanext/scheming/helpers.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/ckanext/scheming/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/ckanext/scheming/templates/base.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/ckanext/scheming/templates/scheming/package/snippets/additional_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/ckanext/scheming/templates/scheming/package/snippets/additional_info.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/ckanext/scheming/templates/snippets/package_item.html" beforeDir="false" afterPath="$PROJECT_DIR$/ckanext/scheming/templates/snippets/package_item.html" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
++  </component>
++  <component name="EmbeddingIndexingInfo">
++    <option name="cachedIndexableFilesCount" value="189" />
+   </component>
+   <component name="FileTemplateManagerImpl">
+     <option name="RECENT_TEMPLATES">
+@@ -32,6 +36,7 @@
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
++    <option name="ROOT_SYNC" value="DONT_SYNC" />
+   </component>
+   <component name="GitHubPullRequestSearchHistory">{
+   &quot;lastFilter&quot;: {
+@@ -46,13 +51,6 @@
+       <filtered-out-file-type name="TAG" />
+       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+     </file-type-list>
+-  </component>
+-  <component name="GithubProjectSettings">
+-    <option name="branchProtectionPatterns">
+-      <list>
+-        <option value="master" />
+-      </list>
+-    </option>
+   </component>
+   <component name="GithubPullRequestsUISettings">{
+   &quot;selectedUrlAndAccountId&quot;: {
+@@ -86,6 +84,69 @@
+     <setting file="file://$PROJECT_DIR$/ckanext/scheming/templates/snippets/package_item.html" root0="FORCE_HIGHLIGHTING" />
+     <setting file="file://$PROJECT_DIR$/ckanext/scheming/templates/scheming/package/snippets/additional_info.html" root0="FORCE_HIGHLIGHTING" />
+     <setting file="file://$PROJECT_DIR$/ckanext/scheming/templates/scheming/package/read.html" root0="FORCE_HIGHLIGHTING" />
++  </component>
++  <component name="McpProjectServerCommands">
++    <commands />
++    <urls />
++  </component>
++  <component name="NextEditCompletionFeaturesState">
++    <decayedCancelled>
++      <entry key="MS100" value="1.1033067358361142" />
++      <entry key="MS500" value="1.968282885687541" />
++      <entry key="S2" value="4.206700211041442" />
++      <entry key="S5" value="7.8324612898873545" />
++      <entry key="S10" value="11.258524173081875" />
++      <entry key="S30" value="15.582623772267375" />
++      <entry key="S60" value="17.392867095756134" />
++      <entry key="M2" value="18.56041170823145" />
++      <entry key="M5" value="19.385003367490363" />
++      <entry key="M10" value="19.68532813589819" />
++      <entry key="M15" value="19.788572444335827" />
++      <entry key="M30" value="19.893449572894706" />
++      <entry key="H1" value="19.946513051229683" />
++      <entry key="H2" value="19.973203266378285" />
++      <entry key="H4" value="19.98658827745977" />
++      <entry key="D1" value="19.99776285446311" />
++      <entry key="W1" value="19.999680362221945" />
++    </decayedCancelled>
++    <decayedSelected>
++      <entry key="MS100" value="0.0" />
++      <entry key="MS500" value="0.0" />
++      <entry key="S2" value="0.0" />
++      <entry key="S5" value="0.0" />
++      <entry key="S10" value="0.0" />
++      <entry key="S30" value="0.0" />
++      <entry key="S60" value="0.0" />
++      <entry key="M2" value="0.0" />
++      <entry key="M5" value="0.0" />
++      <entry key="M10" value="0.0" />
++      <entry key="M15" value="0.0" />
++      <entry key="M30" value="0.0" />
++      <entry key="H1" value="0.0" />
++      <entry key="H2" value="0.0" />
++      <entry key="H4" value="0.0" />
++      <entry key="D1" value="0.0" />
++      <entry key="W1" value="0.0" />
++    </decayedSelected>
++    <decayedShown>
++      <entry key="MS100" value="0.19221777804812248" />
++      <entry key="MS500" value="1.579565717325028" />
++      <entry key="S2" value="4.080271649360959" />
++      <entry key="S5" value="7.762016539310359" />
++      <entry key="S10" value="11.212595324559237" />
++      <entry key="S30" value="15.5597457055211" />
++      <entry key="S60" value="17.37841914342806" />
++      <entry key="M2" value="18.551945107476442" />
++      <entry key="M5" value="19.381219044680712" />
++      <entry key="M10" value="19.683359196677426" />
++      <entry key="M15" value="19.78724188393354" />
++      <entry key="M30" value="19.89277509740294" />
++      <entry key="H1" value="19.94617347090385" />
++      <entry key="H2" value="19.973032885013623" />
++      <entry key="H4" value="19.98650293827691" />
++      <entry key="D1" value="19.99774861058121" />
++      <entry key="W1" value="19.999678326874328" />
++    </decayedShown>
+   </component>
+   <component name="ProjectColorInfo">{
+   &quot;customColor&quot;: &quot;&quot;,
+@@ -102,9 +163,17 @@
+   <component name="PropertiesComponent">{
+   &quot;keyToString&quot;: {
+     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
++    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
++    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+-    &quot;last_opened_file_path&quot;: &quot;/usr/lib/ckan/default/src/ckanext-scheming/ckanext/scheming/public&quot;
++    &quot;last_opened_file_path&quot;: &quot;/usr/lib/ckan/default/src/ckanext-scheming/ckanext/scheming/public&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+   }
+ }</component>
+   <component name="RecentsManager">
+@@ -125,7 +194,7 @@
+   <component name="SharedIndexes">
+     <attachedChunks>
+       <set>
+-        <option value="bundled-python-sdk-4c141bd692a7-e2d783800521-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-251.26927.90" />
++        <option value="bundled-python-sdk-245168a56dbd-c2ffad84badb-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-261.25134.203" />
+       </set>
+     </attachedChunks>
+   </component>
+@@ -481,9 +550,12 @@
+       <option name="project" value="LOCAL" />
+       <updated>1717591542902</updated>
+     </task>
+-    <option name="localTasksCounter" value="160" />
++    <option name="localTasksCounter" value="168" />
+     <servers />
+   </component>
++  <component name="TypeScriptGeneratedFilesManager">
++    <option name="version" value="3" />
++  </component>
+   <component name="Vcs.Log.Tabs.Properties">
+     <option name="TAB_STATES">
+       <map>
+@@ -497,13 +569,6 @@
+   </component>
+   <component name="VcsManagerConfiguration">
+     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+-    <MESSAGE value="generate hovertext info and linking to TS" />
+-    <MESSAGE value="generate Hoverinfo and ts-url via CURIE" />
+-    <MESSAGE value="bold text on hoverInfo" />
+-    <MESSAGE value="color coding for curies" />
+-    <MESSAGE value="Reduce line breaks within hover-info" />
+-    <MESSAGE value="measurement Technique takes CURIE" />
+-    <MESSAGE value="Measurement CURIE replaced by short_form" />
+     <MESSAGE value="measurement technique displayed as colored label" />
+     <MESSAGE value="hover-text tooltip css line-height" />
+     <MESSAGE value="hover-text css resource" />
+@@ -522,6 +587,13 @@
+     <MESSAGE value="unstable unichem source error repsonse fix" />
+     <MESSAGE value="resource_url as a different field" />
+     <MESSAGE value="resource_name as a different field" />
+-    <option name="LAST_COMMIT_MESSAGE" value="resource_name as a different field" />
++    <MESSAGE value="fix: dataset4chem with resources extra" />
++    <MESSAGE value="fix: package_form with custom fields and values" />
++    <MESSAGE value="feat: external URL for repository on ABOUT" />
++    <MESSAGE value="bug: relationship helper function" />
++    <MESSAGE value="bug: undo relationship helper function" />
++    <MESSAGE value="test: relationship helpers pass by" />
++    <MESSAGE value="add: Dataset Update Frequency" />
++    <option name="LAST_COMMIT_MESSAGE" value="add: Dataset Update Frequency" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"VcsDirectoryMappings\">\n    <mapping directory=\"$PROJECT_DIR$\" vcs=\"Git\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+--- a/.idea/vcs.xml	(revision d2ea8da908dfdb374a84988eb6af91bf2a464ef6)
++++ b/.idea/vcs.xml	(date 1762852962145)
+@@ -1,6 +1,7 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="VcsDirectoryMappings">
+-    <mapping directory="$PROJECT_DIR$" vcs="Git" />
++    <mapping directory="" vcs="Git" />
++    <mapping directory="$PROJECT_DIR$/../ckanext-relationship" vcs="Git" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: ckanext/scheming/bioschema4Chem/sample4chem.yaml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ckanext/scheming/bioschema4Chem/sample4chem.yaml b/ckanext/scheming/bioschema4Chem/sample4chem.yaml
+new file mode 100644
+--- /dev/null	(date 1750750709184)
++++ b/ckanext/scheming/bioschema4Chem/sample4chem.yaml	(date 1750750709184)
+@@ -0,0 +1,58 @@
++scheming_version: 3
++dataset_type: sample
++about: A reimplementation Sample for CKAN, to witness the relationship between packages
++about_url: https://bioschemas.org/profiles/Dataset/1.0-RELEASE
++
++dataset_fields:
++- field_name: title
++  label: Title
++  preset: title
++  form_placeholder: eg. A descriptive title
++
++- field_name: name
++  label: URL
++  preset: dataset_slug
++  form_placeholder: eg. my-dataset
++
++- field_name: owner_org
++  label: Organization
++  preset: dataset_organization
++
++# Chemistry Metadata included
++- field_name: doi
++  label: DOI
++  form_placeholder: ex. '10:xxx-xxx'
++  form_snippet: text.html   # a DOI based snippet can be added where '10:xxx' becomes a 'required' field.
++
++resource_fields:
++
++- field_name: url
++  label: URL
++  preset: resource_url_upload
++
++- field_name: name
++  label: Name
++  form_placeholder: eg. January 2011 Gold Prices
++
++- field_name: description
++  label: Description
++  form_snippet: markdown.html
++  form_placeholder: Some useful notes about the data
++
++- field_name: format
++  label: Format
++  preset: resource_format_autocomplete
++
++#relationship to datasets
++
++- field_name: related_dataset
++  label: Related dataset
++  preset: related_entity
++  current_entity: molecule
++  current_entity_type: molecule
++  related_entity: package
++  related_entity_type: dataset
++  relation_type: parent_of
++  multiple: true
++  updatable_only: false
++  required: false
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"Black\">\n    <option name=\"sdkName\" value=\"Python 3.7 (ckanext-scheming)\" />\n  </component>\n  <component name=\"ProjectRootManager\" version=\"2\" project-jdk-name=\"Python 3.7 (ckanext-scheming)\" project-jdk-type=\"Python SDK\" />\n  <component name=\"PyCharmProfessionalAdvertiser\">\n    <option name=\"shown\" value=\"true\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision d2ea8da908dfdb374a84988eb6af91bf2a464ef6)
++++ b/.idea/misc.xml	(date 1753785687290)
+@@ -7,4 +7,7 @@
+   <component name="PyCharmProfessionalAdvertiser">
+     <option name="shown" value="true" />
+   </component>
++  <component name="PythonCompatibilityInspectionAdvertiser">
++    <option name="version" value="3" />
++  </component>
+ </project>
+\ No newline at end of file

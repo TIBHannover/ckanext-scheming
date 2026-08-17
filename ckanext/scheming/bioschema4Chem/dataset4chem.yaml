@@ -175,12 +175,12 @@ dataset_fields:
 
 resource_fields:
 
-- field_name: url
+- field_name: resource_url
   label: URL
   preset: resource_url_upload
 
-- field_name: name
-  label: Resource Name
+- field_name: resource_name
+  label: Name
   form_placeholder: eg. January 2011 Gold Prices
 
 - field_name: format

@@ -4,14 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c495dcf4-ac1b-4735-a93c-6b0a273cccfb" name="Changes" comment="resource_name as a different field">
+    <list default="true" id="c495dcf4-ac1b-4735-a93c-6b0a273cccfb" name="Changes" comment="additional_info added molecule id">
+      <change afterPath="$PROJECT_DIR$/.ai/mcp/mcp.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/ckanext/scheming/bioschema4Chem/sample4chem.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/LNKD.tech Editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/LNKD.tech Editor.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ckanext-scheming.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ckanext-scheming.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_06_07_26,_11_49_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_06_07_26,_16_09_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_06_07_26__11_49__Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ckanext/scheming/bioschema4Chem/dataset4chem.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/ckanext/scheming/bioschema4Chem/dataset4chem.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ckanext/scheming/bioschema4Chem/molecule4chem.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/ckanext/scheming/bioschema4Chem/molecule4chem.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ckanext/scheming/helpers.py" beforeDir="false" afterPath="$PROJECT_DIR$/ckanext/scheming/helpers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ckanext/scheming/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/ckanext/scheming/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ckanext/scheming/templates/scheming/package/snippets/additional_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/ckanext/scheming/templates/scheming/package/snippets/additional_info.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +32,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="test-server" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -46,13 +50,6 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
-  </component>
-  <component name="GithubProjectSettings">
-    <option name="branchProtectionPatterns">
-      <list>
-        <option value="master" />
-      </list>
-    </option>
   </component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
@@ -87,6 +84,10 @@
     <setting file="file://$PROJECT_DIR$/ckanext/scheming/templates/scheming/package/snippets/additional_info.html" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ckanext/scheming/templates/scheming/package/read.html" root0="FORCE_HIGHLIGHTING" />
   </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 2
@@ -99,14 +100,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/usr/lib/ckan/default/src/ckanext-scheming/ckanext/scheming/public&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "test-server",
+    "last_opened_file_path": "/usr/lib/ckan/default/src/ckanext-scheming/ckanext/scheming/public"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/ckanext/scheming/public" />
@@ -125,7 +126,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-4c141bd692a7-e2d783800521-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-251.26927.90" />
+        <option value="bundled-python-sdk-1b1018131e27-aa17d162503b-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-243.22562.180" />
       </set>
     </attachedChunks>
   </component>
@@ -481,7 +482,7 @@
       <option name="project" value="LOCAL" />
       <updated>1717591542902</updated>
     </task>
-    <option name="localTasksCounter" value="160" />
+    <option name="localTasksCounter" value="155" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -497,6 +498,11 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="removed preset" />
+    <MESSAGE value="undo the last commit" />
+    <MESSAGE value="bug fix: removing measurement_technique_iri in addt. table" />
+    <MESSAGE value="hyperlink for iri updated" />
+    <MESSAGE value="display units for each measurement" />
     <MESSAGE value="generate hovertext info and linking to TS" />
     <MESSAGE value="generate Hoverinfo and ts-url via CURIE" />
     <MESSAGE value="bold text on hoverInfo" />
@@ -517,11 +523,6 @@
     <MESSAGE value="front-end show relation molecule &amp; dataset" />
     <MESSAGE value="alternate-names as multiple text field" />
     <MESSAGE value="additional_info added molecule id" />
-    <MESSAGE value="display related datasets on molecule-search page" />
-    <MESSAGE value="molecule title long, else alternate_names" />
-    <MESSAGE value="unstable unichem source error repsonse fix" />
-    <MESSAGE value="resource_url as a different field" />
-    <MESSAGE value="resource_name as a different field" />
-    <option name="LAST_COMMIT_MESSAGE" value="resource_name as a different field" />
+    <option name="LAST_COMMIT_MESSAGE" value="additional_info added molecule id" />
   </component>
 </project>

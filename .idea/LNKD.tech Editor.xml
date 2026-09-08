@@ -81,7 +81,7 @@
               <entry key="http://schema.org">
                 <value>
                   <set>
-                    <option value="urn:tag:lnkd.tech,2023:digest:sha-256/62854C817CF24454C9FC1D9DDB605C7B6A4FDE0FF574960D40B0E150166997B6" />
+                    <option value="urn:tag:lnkd.tech,2023:digest:sha-256/B6AD7D1EFCDF035F9C6EB30601D7DD9AE381B33AD557D9119BC10DCB436FAB8D" />
                   </set>
                 </value>
               </entry>
@@ -95,14 +95,14 @@
               <entry key="http://spinrdf.org/spin">
                 <value>
                   <set>
-                    <option value="urn:tag:lnkd.tech,2023:digest:sha-256/C21CE546D79A432D2AA62479CF1AF162B6B3D3FCC2C6F16B8B3A7F430FF30E11" />
+                    <option value="urn:tag:lnkd.tech,2023:digest:sha-256/CC3E56C1F2BC6D4213BAF662C0A1FEB97ED968FA21D6C0ED7E44887747C74BC3" />
                   </set>
                 </value>
               </entry>
               <entry key="http://spinrdf.org/spl">
                 <value>
                   <set>
-                    <option value="urn:tag:lnkd.tech,2023:digest:sha-256/1DD4BE048D082459C82A11CF6E7659431DA3198CD451B70333FB1C68EACA05E8" />
+                    <option value="urn:tag:lnkd.tech,2023:digest:sha-256/DEFAF007176C3F41DDDDFACFF89A4D57CD78833ED635FD3C87962D6312EA65A4" />
                   </set>
                 </value>
               </entry>
@@ -116,7 +116,7 @@
               <entry key="http://www.w3.org/2000/01/rdf-schema">
                 <value>
                   <set>
-                    <option value="urn:tag:lnkd.tech,2023:digest:sha-256/164A70B28D9AC4B828EEC7D9E4B548A9465A5E2C154D53A142CC5E18566E04EC" />
+                    <option value="urn:tag:lnkd.tech,2023:digest:sha-256/ECEE3A011B7C13EA2A7E40B0A208BFE6BE53D69FDD53EE035E09E9F9E5108AD6" />
                   </set>
                 </value>
               </entry>
@@ -158,7 +158,7 @@
               <entry key="https://schema.org">
                 <value>
                   <set>
-                    <option value="urn:tag:lnkd.tech,2023:digest:sha-256/24D9BBA4119AA8C8708767B12B3BCACBC8BB8750CDB111F573996899AA29F089" />
+                    <option value="urn:tag:lnkd.tech,2023:digest:sha-256/2C09EED77869A80B37356C02905D6A2BDA372DE45CB8A1E14C4FE5F2FCD25D57" />
                   </set>
                 </value>
               </entry>

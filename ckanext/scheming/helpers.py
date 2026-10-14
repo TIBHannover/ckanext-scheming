@@ -8,6 +8,7 @@ import six
 
 from jinja2 import Environment
 from ckan.plugins.toolkit import config, _, h
+import ckan.plugins.toolkit as tk
 
 from ckanapi import LocalCKAN, NotFound, NotAuthorized
 
@@ -471,10 +472,10 @@ def trr375_available_groups():
 
     try:
         context = {
-            "user": toolkit.current_user.name
+            "user": tk.current_user.name
         }
 
-        groups = toolkit.get_action("group_list")(
+        groups = tk.get_action("group_list")(
             context,
             {"all_fields": True}
         )
@@ -489,5 +490,5 @@ def trr375_available_groups():
             ).lower()
         )
 
-    except toolkit.NotAuthorized:
+    except tk.NotAuthorized:
         return []

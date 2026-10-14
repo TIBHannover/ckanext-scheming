@@ -1,0 +1,166 @@
+# TRR375 dataset metadata schema
+# Use with ckanext-scheming (scheming_datasets).
+scheming_version: 2
+dataset_type: dataset
+about: TRR375 dataset metadata schema
+
+dataset_fields:
+  # STEP 1 — CKAN core metadata
+  - field_name: title
+    label: Title
+    preset: title
+    required: true
+    form_placeholder: Characterization of AlSi10Mg porous samples
+
+  - field_name: name
+    label: Dataset URL / Slug
+    preset: dataset_slug
+    required: true
+    form_placeholder: characterization-alsi10mg-porous-samples
+
+  - field_name: notes
+    label: Description
+    preset: markdown
+    required: true
+    form_placeholder: Experimental characterization of porous AlSi10Mg specimens...
+
+  - field_name: owner_org
+    label: Organization
+    preset: dataset_organization
+    required: true
+
+  # Keep the underlying CKAN `private` key (True=Private, False=Public).
+  # The dropdown wording is 'Restricted' per spreadsheet, but selecting it
+  # only makes the whole dataset private; it does not implement file-level ACLs.
+  - field_name: private
+    label: Visibility
+    preset: select
+    required: true
+    default: 'False'
+    choices:
+      - value: 'False'
+        label: Public
+      - value: 'True'
+        label: Restricted
+    help_text: Public is selected by default. Restricted means a private dataset.
+
+  - field_name: author
+    label: Author
+    required: true
+    validators: scheming_required unicode_safe
+
+  - field_name: tag_string
+    label: Keywords
+    preset: tag_string_autocomplete
+    form_placeholder: porous material, AlSi10Mg, additive manufacturing, X-ray CT
+    help_text: Controlled vocabulary for keywords can be integrated later.
+
+  - field_name: license_id
+    label: License
+    form_snippet: license.html
+    required: true
+    validators: scheming_required unicode_safe
+    help_text: Select a license, for example CC BY 4.0 or CC BY-SA 4.0 (if configured).
+
+  - field_name: maintainer
+    label: Maintainer / Contact Person
+    required: true
+    validators: scheming_required unicode_safe
+    form_placeholder: Max Mustermann
+
+  - field_name: maintainer_email
+    label: Contact Email
+    required: true
+    validators: scheming_required unicode_safe strip_value email_validator
+    form_placeholder: max.mustermann@uni-hannover.de
+
+  - field_name: version
+    label: Dataset Version
+    validators: ignore_missing unicode_safe package_version_validator
+    form_placeholder: '1.0'
+    help_text: Recommended.
+
+  - field_name: url
+    label: Related Web Page
+    display_snippet: link.html
+    validators: ignore_missing unicode_safe
+    form_placeholder: https://www.trrhypo.de/
+
+  # TRR375 project metadata
+  - field_name: project_id
+    label: TRR375 Subproject
+    preset: select
+    required: true
+    form_include_blank_choice: true
+    choices:
+      - {value: A01, label: A01}
+      - {value: A02, label: A02}
+      - {value: A03, label: A03}
+      - {value: B01, label: B01}
+      - {value: B02, label: B02}
+      - {value: B05, label: B05}
+      - {value: C05, label: C05}
+    help_text: Select the TRR375 subproject. Automatic CKAN group assignment requires separate implementation.
+
+  - field_name: project_area
+    label: Project Area
+    preset: select
+    required: true
+    form_include_blank_choice: true
+    choices:
+      - {value: A, label: A}
+      - {value: B, label: B}
+      - {value: C, label: C}
+      - {value: S, label: S}
+
+  # FAIR / publication metadata
+  - field_name: doi
+    label: DOI
+    form_placeholder: 10.5281/zenodo.xxxxx
+    validators: ignore_missing unicode_safe
+    help_text: Conditional; add the DOI after publication in an external repository. This field does not generate a DOI.
+
+  - field_name: related_publication
+    label: Related Publication
+    validators: ignore_missing unicode_safe
+    form_placeholder: https://doi.org/10.1016/j...
+    help_text: DOI or URL of a related publication.
+
+  - field_name: related_dataset
+    label: Related Dataset
+    validators: ignore_missing unicode_safe
+    form_placeholder: TRR375-B01-001
+    help_text: Dataset identifier/reference. A CKAN dataset picker or one-to-many relationship needs separate implementation.
+
+  - field_name: funding_reference
+    label: Funding / Project Identifier
+    default: TRR 375
+    validators: ignore_missing unicode_safe
+    help_text: Recommended. Prefilled with TRR 375.
+
+# STEP 2 — CKAN resource metadata
+# IMPORTANT: Resource field names in the workbook are descriptive aliases;
+# native CKAN keys must be url, name, description, format.
+resource_fields:
+  - field_name: url
+    label: File/Resource
+    preset: resource_url_upload
+    required: true
+    upload_label: File/Resource
+
+  - field_name: name
+    label: Resource Name
+    required: true
+    validators: scheming_required unicode_safe
+    form_placeholder: Measurement data
+
+  - field_name: description
+    label: Resource Description
+    preset: markdown
+    required: true
+
+  - field_name: format
+    label: File Format
+    preset: resource_format_autocomplete
+    required: true
+    help_text: For example CSV, TIFF or JSON.

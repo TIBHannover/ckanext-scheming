@@ -87,20 +87,14 @@ dataset_fields:
     form_placeholder: https://www.trrhypo.de/
 
   # TRR375 project metadata
+  # TRR375 project metadata - Dynamic CKAN group selection
   - field_name: project_id
     label: TRR375 Subproject
-    preset: select
+    form_snippet: trr375_group_select.html
+    validators: scheming_required unicode_safe
     required: true
     form_include_blank_choice: true
-    choices:
-      - {value: A01, label: A01}
-      - {value: A02, label: A02}
-      - {value: A03, label: A03}
-      - {value: B01, label: B01}
-      - {value: B02, label: B02}
-      - {value: B05, label: B05}
-      - {value: C05, label: C05}
-    help_text: Select the TRR375 subproject. Automatic CKAN group assignment requires separate implementation.
+    help_text: Select the TRR375 subproject from the existing CKAN groups.
 
   - field_name: project_area
     label: Project Area

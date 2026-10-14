@@ -459,3 +459,35 @@ def scheming_missing_required_fields(pages, data=None, package_id=None):
             if f.get('required') and not data.get(f['field_name'])
         ])
     return missing
+
+@helper
+def trr375_available_groups():
+    """
+    Retrieve existing CKAN groups dynamically.
+
+    Returns:
+        List of groups available to the current user.
+    """
+
+    try:
+        context = {
+            "user": toolkit.current_user.name
+        }
+
+        groups = toolkit.get_action("group_list")(
+            context,
+            {"all_fields": True}
+        )
+
+        return sorted(
+            groups,
+            key=lambda group: (
+                group.get("display_name")
+                or group.get("title")
+                or group.get("name")
+                or ""
+            ).lower()
+        )
+
+    except toolkit.NotAuthorized:
+        return []

@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c495dcf4-ac1b-4735-a93c-6b0a273cccfb" name="Changes" comment="trr375: add schemas for institute and dataset">
-      <change afterPath="$PROJECT_DIR$/ckanext/scheming/trr375/trr375_dataset.yaml" afterDir="false" />
+    <list default="true" id="c495dcf4-ac1b-4735-a93c-6b0a273cccfb" name="Changes" comment="(feat) trr375: add schema for dataset">
+      <change afterPath="$PROJECT_DIR$/ckanext/scheming/templates/scheming/form_snippets/trr375-group_select.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ckanext/scheming/helpers.py" beforeDir="false" afterPath="$PROJECT_DIR$/ckanext/scheming/helpers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ckanext/scheming/trr375/trr375_dataset.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/ckanext/scheming/trr375/trr375_dataset.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,61 +84,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="1.4622838993130177E-106" />
+      <entry key="S2" value="5.0253478145794684E-27" />
+      <entry key="S5" value="4.503734064663107E-11" />
+      <entry key="S10" value="9.462586307674855E-6" />
+      <entry key="S30" value="0.033553257475716726" />
+      <entry key="S60" value="0.25902770849907125" />
+      <entry key="M2" value="0.7197457220756186" />
+      <entry key="M5" value="1.334945586728593" />
+      <entry key="M10" value="2.045111941495668" />
+      <entry key="M15" value="3.4505810158447012" />
+      <entry key="M30" value="8.89379301781137" />
+      <entry key="H1" value="16.203386055917054" />
+      <entry key="H2" value="22.308116649887758" />
+      <entry key="H4" value="26.270854369461198" />
+      <entry key="D1" value="30.152596151032878" />
+      <entry key="W1" value="30.877407036269403" />
+    </decayedCancelled>
+    <decayedSelected>
       <entry key="MS100" value="1.0" />
       <entry key="MS500" value="1.0" />
       <entry key="S2" value="1.0" />
       <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.0000000007490635" />
-      <entry key="S30" value="1.0068291521647494" />
-      <entry key="S60" value="1.397598465421341" />
-      <entry key="M2" value="4.171446062789642" />
-      <entry key="M5" value="12.344564963534069" />
-      <entry key="M10" value="18.466570475443245" />
-      <entry key="M15" value="21.186353821510554" />
-      <entry key="M30" value="24.34036602989623" />
-      <entry key="H1" value="26.102067679819278" />
-      <entry key="H2" value="27.033347903892817" />
-      <entry key="H4" value="27.51216747506781" />
-      <entry key="D1" value="27.918061328750657" />
-      <entry key="W1" value="27.98827887057106" />
-    </decayedCancelled>
-    <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="0.0" />
-      <entry key="S10" value="0.0" />
-      <entry key="S30" value="0.0" />
-      <entry key="S60" value="0.0" />
-      <entry key="M2" value="0.0" />
-      <entry key="M5" value="0.0" />
-      <entry key="M10" value="0.0" />
-      <entry key="M15" value="0.0" />
-      <entry key="M30" value="0.0" />
-      <entry key="H1" value="0.0" />
-      <entry key="H2" value="0.0" />
-      <entry key="H4" value="0.0" />
-      <entry key="D1" value="0.0" />
-      <entry key="W1" value="0.0" />
+      <entry key="S10" value="1.0" />
+      <entry key="S30" value="1.0" />
+      <entry key="S60" value="1.0" />
+      <entry key="M2" value="1.0" />
+      <entry key="M5" value="1.0" />
+      <entry key="M10" value="1.0" />
+      <entry key="M15" value="1.0" />
+      <entry key="M30" value="1.0" />
+      <entry key="H1" value="1.0" />
+      <entry key="H2" value="1.0" />
+      <entry key="H4" value="1.0" />
+      <entry key="D1" value="1.0" />
+      <entry key="W1" value="1.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.7526233737055336" />
-      <entry key="MS500" value="0.9447470409972061" />
-      <entry key="S2" value="0.9858909615070789" />
-      <entry key="S5" value="0.9943323153899832" />
-      <entry key="S10" value="0.9971621316921682" />
-      <entry key="S30" value="1.005876943386352" />
-      <entry key="S60" value="1.396966274917305" />
-      <entry key="M2" value="4.170579422143643" />
-      <entry key="M5" value="12.343575364323778" />
-      <entry key="M10" value="18.46583604362503" />
-      <entry key="M15" value="21.185793338116547" />
-      <entry key="M30" value="24.34004473027075" />
-      <entry key="H1" value="26.101895569057216" />
-      <entry key="H2" value="27.033258819941967" />
-      <entry key="H4" value="27.5121221546071" />
-      <entry key="D1" value="27.918053665361334" />
-      <entry key="W1" value="27.98827777308328" />
+      <entry key="MS100" value="6.595895624602237E-6" />
+      <entry key="MS500" value="0.09201417888551112" />
+      <entry key="S2" value="0.5507616454167567" />
+      <entry key="S5" value="0.7877446739245069" />
+      <entry key="S10" value="0.8875592667689857" />
+      <entry key="S30" value="0.9945571695506257" />
+      <entry key="S60" value="1.239293002541637" />
+      <entry key="M2" value="1.7097855565712785" />
+      <entry key="M5" value="2.3309259916119505" />
+      <entry key="M10" value="3.0430779359550475" />
+      <entry key="M15" value="4.449188581198028" />
+      <entry key="M30" value="9.893024865079466" />
+      <entry key="H1" value="17.202953522856884" />
+      <entry key="H2" value="23.30788014309708" />
+      <entry key="H4" value="27.27072954724691" />
+      <entry key="D1" value="31.15257427500192" />
+      <entry key="W1" value="31.877403882519747" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -546,7 +549,7 @@
       <option name="project" value="LOCAL" />
       <updated>1717591542902</updated>
     </task>
-    <option name="localTasksCounter" value="156" />
+    <option name="localTasksCounter" value="157" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -565,7 +568,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="undo the last commit" />
     <MESSAGE value="bug fix: removing measurement_technique_iri in addt. table" />
     <MESSAGE value="hyperlink for iri updated" />
     <MESSAGE value="display units for each measurement" />
@@ -590,6 +592,7 @@
     <MESSAGE value="alternate-names as multiple text field" />
     <MESSAGE value="additional_info added molecule id" />
     <MESSAGE value="trr375: add schemas for institute and dataset" />
-    <option name="LAST_COMMIT_MESSAGE" value="trr375: add schemas for institute and dataset" />
+    <MESSAGE value="(feat) trr375: add schema for dataset" />
+    <option name="LAST_COMMIT_MESSAGE" value="(feat) trr375: add schema for dataset" />
   </component>
 </project>

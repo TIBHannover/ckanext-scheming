@@ -29,18 +29,18 @@ dataset_fields:
     preset: dataset_organization
     required: true
 
-  # Dataset visibility (Public by default)
-  - field_name: private
-    label: Visibility
-    preset: select
-    required: true
-    default: 'True'
-    choices:
-      - value: 'False'
-        label: Public
-      - value: 'True'
-        label: Private
-    help_text: Public is selected by default. You can change it to Private if needed.
+#  # Dataset visibility (Public by default)
+#  - field_name: private
+#    label: Visibility
+#    preset: select
+#    required: true
+#    default: 'True'
+#    choices:
+#      - value: 'False'
+#        label: Public
+#      - value: 'True'
+#        label: Private
+#    help_text: Public is selected by default. You can change it to Private if needed.
 
   - field_name: author
     label: Author

@@ -29,20 +29,18 @@ dataset_fields:
     preset: dataset_organization
     required: true
 
-  # Keep the underlying CKAN `private` key (True=Private, False=Public).
-  # The dropdown wording is 'Restricted' per spreadsheet, but selecting it
-  # only makes the whole dataset private; it does not implement file-level ACLs.
+  # Dataset visibility (Public by default)
   - field_name: private
     label: Visibility
     preset: select
     required: true
-    default: 'False'
+    default: 'True'
     choices:
       - value: 'False'
         label: Public
       - value: 'True'
-        label: Restricted
-    help_text: Public is selected by default. Restricted means a private dataset.
+        label: Private
+    help_text: Public is selected by default. You can change it to Private if needed.
 
   - field_name: author
     label: Author

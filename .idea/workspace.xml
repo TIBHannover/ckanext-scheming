@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c495dcf4-ac1b-4735-a93c-6b0a273cccfb" name="Changes" comment="fix trr375: helpers">
+    <list default="true" id="c495dcf4-ac1b-4735-a93c-6b0a273cccfb" name="Changes" comment="remove tr375: visibility">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ckanext/scheming/trr375/trr375_dataset.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/ckanext/scheming/trr375/trr375_dataset.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -81,61 +82,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.0" />
-      <entry key="S30" value="1.000000000000005" />
-      <entry key="S60" value="1.0000003323778093" />
-      <entry key="M2" value="1.0028848778671358" />
-      <entry key="M5" value="1.7679422169126227" />
-      <entry key="M10" value="6.779447856731939" />
-      <entry key="M15" value="13.050540253218196" />
-      <entry key="M30" value="28.640748634132883" />
-      <entry key="H1" value="46.83684408051908" />
-      <entry key="H2" value="62.594828416336505" />
-      <entry key="H4" value="73.40220480523149" />
-      <entry key="D1" value="84.50473436950085" />
-      <entry key="W1" value="86.63739468824701" />
+      <entry key="MS100" value="1.000452435577095" />
+      <entry key="MS500" value="1.2146150990299436" />
+      <entry key="S2" value="1.966406218403742" />
+      <entry key="S5" value="3.463793134162983" />
+      <entry key="S10" value="4.9767739581588355" />
+      <entry key="S30" value="6.745489142343381" />
+      <entry key="S60" value="7.3536074340705815" />
+      <entry key="M2" value="8.018710368118938" />
+      <entry key="M5" value="10.226723853741202" />
+      <entry key="M10" value="14.947244629495813" />
+      <entry key="M15" value="20.705682009797275" />
+      <entry key="M30" value="36.296096880832415" />
+      <entry key="H1" value="55.75371831545088" />
+      <entry key="H2" value="73.21161704455851" />
+      <entry key="H4" value="85.41922644740441" />
+      <entry key="D1" value="98.12402800845553" />
+      <entry key="W1" value="100.58162543195763" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="8.660057330791983E-259" />
-      <entry key="S5" value="5.956735369998912E-104" />
-      <entry key="S10" value="2.4406424092846764E-52" />
-      <entry key="S30" value="6.249348121267895E-18" />
-      <entry key="S60" value="2.4998703919883956E-9" />
-      <entry key="M2" value="5.00264655033788E-5" />
-      <entry key="M5" value="0.019985690152918845" />
-      <entry key="M10" value="0.16878375947953408" />
-      <entry key="M15" value="0.36529249123288293" />
-      <entry key="M30" value="0.8302303737738423" />
-      <entry key="H1" value="1.2787503278569967" />
-      <entry key="H2" value="1.5961159218778087" />
-      <entry key="H4" value="1.7858115683852773" />
-      <entry key="D1" value="1.9624631975964837" />
-      <entry key="W1" value="1.9945906497394033" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="1.3287712923297435E-135" />
+      <entry key="S10" value="3.645231532193452E-68" />
+      <entry key="S30" value="3.3156985507383073E-23" />
+      <entry key="S60" value="5.7582120457005574E-12" />
+      <entry key="M2" value="2.400959865127778E-6" />
+      <entry key="M5" value="0.005931891274160834" />
+      <entry key="M10" value="0.09195337462847186" />
+      <entry key="M15" value="0.24366814431541622" />
+      <entry key="M30" value="0.6780748292154098" />
+      <entry key="H1" value="1.1556471716923578" />
+      <entry key="H2" value="1.5173444525221063" />
+      <entry key="H4" value="1.741187367494678" />
+      <entry key="D1" value="1.9542037111818413" />
+      <entry key="W1" value="1.9933892377699083" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.8585654364377537" />
-      <entry key="MS500" value="0.9699619103417348" />
-      <entry key="S2" value="0.9924043746858185" />
-      <entry key="S5" value="0.9969547984662518" />
-      <entry key="S10" value="0.9984762383082793" />
-      <entry key="S30" value="0.9994918212341851" />
-      <entry key="S60" value="0.9997462119299574" />
-      <entry key="M2" value="1.002801363433476" />
-      <entry key="M5" value="1.787140926466191" />
-      <entry key="M10" value="6.945661031868312" />
-      <entry key="M15" value="13.412523329125209" />
-      <entry key="M30" value="29.467703478840278" />
-      <entry key="H1" value="48.11324637261545" />
-      <entry key="H2" value="64.18952575234691" />
-      <entry key="H4" value="75.18723408287677" />
-      <entry key="D1" value="86.46705579448013" />
-      <entry key="W1" value="88.63196478737888" />
+      <entry key="MS100" value="0.953069005366345" />
+      <entry key="MS500" value="1.202885776102602" />
+      <entry key="S2" value="1.9616998139963462" />
+      <entry key="S5" value="3.460485967281282" />
+      <entry key="S10" value="4.974383572262679" />
+      <entry key="S30" value="6.744402199209463" />
+      <entry key="S60" value="7.353013321724802" />
+      <entry key="M2" value="8.018382834547612" />
+      <entry key="M5" value="10.232261721394377" />
+      <entry key="M10" value="15.037703342101466" />
+      <entry key="M15" value="20.947075315493983" />
+      <entry key="M30" value="36.97146011737555" />
+      <entry key="H1" value="56.907224525037314" />
+      <entry key="H2" value="74.72760322655313" />
+      <entry key="H4" value="87.15964617022561" />
+      <entry key="D1" value="100.07808971895236" />
+      <entry key="W1" value="102.57499401348453" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -150,27 +151,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "trr375",
-    "git.auto.fetch.suggestion.counter": "1",
-    "last_opened_file_path": "/usr/lib/ckan/default/src/ckanext-scheming/ckanext/scheming/public",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.jshint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.jshint": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "python.packages.toolwindow.project.migrated.to.right.top.v2": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;trr375&quot;,
+    &quot;git.auto.fetch.suggestion.counter&quot;: &quot;1&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/usr/lib/ckan/default/src/ckanext-scheming/ckanext/scheming/public&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;python.packages.toolwindow.project.migrated.to.right.top.v2&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/ckanext/scheming/public" />
@@ -186,6 +187,84 @@
       <recent name="$PROJECT_DIR$/ckanext/scheming/bioschema4Chem/" />
       <recent name="$PROJECT_DIR$/ckanext/scheming/BioSchema4Chem/" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="ckanext-scheming" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="false" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="Tox" factoryName="Tox">
+      <module name="ckanext-scheming" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="false" />
+      <option name="RUN_TOOL" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docs" factoryName="Docutils task">
+      <module name="ckanext-scheming" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="false" />
+      <option name="RUN_TOOL" value="" />
+      <option name="docutils_input_file" value="" />
+      <option name="docutils_output_file" value="" />
+      <option name="docutils_params" value="" />
+      <option name="docutils_task" value="" />
+      <option name="docutils_open_in_browser" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docs" factoryName="Sphinx task">
+      <module name="ckanext-scheming" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="false" />
+      <option name="RUN_TOOL" value="" />
+      <option name="docutils_input_file" value="" />
+      <option name="docutils_output_file" value="" />
+      <option name="docutils_params" value="" />
+      <option name="docutils_task" value="" />
+      <option name="docutils_open_in_browser" value="false" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -546,7 +625,7 @@
       <option name="project" value="LOCAL" />
       <updated>1717591542902</updated>
     </task>
-    <option name="localTasksCounter" value="160" />
+    <option name="localTasksCounter" value="162" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -565,8 +644,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="generate hovertext info and linking to TS" />
-    <MESSAGE value="generate Hoverinfo and ts-url via CURIE" />
     <MESSAGE value="bold text on hoverInfo" />
     <MESSAGE value="color coding for curies" />
     <MESSAGE value="Reduce line breaks within hover-info" />
@@ -590,6 +667,8 @@
     <MESSAGE value="(feat) trr375: add helpers for group preset" />
     <MESSAGE value="fix trr375: rename group snippets html" />
     <MESSAGE value="fix trr375: helpers" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix trr375: helpers" />
+    <MESSAGE value="fix trr375: visibility" />
+    <MESSAGE value="remove tr375: visibility" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove tr375: visibility" />
   </component>
 </project>

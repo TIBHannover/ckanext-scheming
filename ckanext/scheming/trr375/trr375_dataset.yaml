@@ -44,8 +44,35 @@ dataset_fields:
 
   - field_name: author
     label: Author
+    repeating_label: Author
+    repeating_collapse: true
+    repeating_grid: true
     required: true
     validators: scheming_required unicode_safe
+ # This is for RADAR implementation and for general repeating author. on RADAR this is mapped to Creator.
+    repeating_subfields:
+
+      - field_name: given_name
+        label: Given Name
+        required: true
+
+      - field_name: family_name
+        label: Family Name
+        required: true
+
+      - field_name: orcid
+        label: ORCID
+        required: false
+        help_text: "ORCID iD of the researcher"
+
+      - field_name: affiliation
+        label: Affiliation
+        required: false
+
+      - field_name: affiliation_ror
+        label: Affiliation ROR
+        required: false
+        help_text: "ROR identifier of the affiliated institution"
 
   - field_name: tag_string
     label: Keywords

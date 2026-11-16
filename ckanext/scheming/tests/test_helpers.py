@@ -15,9 +15,90 @@ from ckanext.scheming.helpers import (
     scheming_get_presets,
     scheming_datastore_choices,
     scheming_display_json_value,
+    scheming_link_ts,
 )
 
 from ckanapi import NotFound
+
+
+class FakeRedis(object):
+    def __init__(self):
+        self.values = {}
+
+    def get(self, key):
+        return self.values.get(key)
+
+    def setex(self, key, ttl, value):
+        self.values[key] = value
+
+
+class TerminologyResponse(object):
+    status_code = 200
+
+    def json(self):
+        return {
+            "_embedded": {
+                "terms": [{
+                    "label": "temperature",
+                    "description": ["A measure of thermal energy."],
+                    "ontology_name": "chmo",
+                    "ontology_prefix": "CHMO",
+                    "short_form": "CHMO_0000001",
+                    "iri": "http://purl.obolibrary.org/obo/CHMO_0000001",
+                }]
+            }
+        }
+
+
+class TestTerminologyLink(object):
+    curie = "http://purl.obolibrary.org/obo/CHMO_0000001"
+
+    @patch("ckanext.scheming.helpers._terminology_config_bool",
+           return_value=True)
+    @patch("ckanext.scheming.helpers.connect_to_redis")
+    @patch("ckanext.scheming.helpers.requests.get")
+    def test_successful_lookup(self, get, connect_to_redis, config_bool):
+        connect_to_redis.return_value = FakeRedis()
+        get.return_value = TerminologyResponse()
+
+        result = scheming_link_ts(self.curie)
+
+        assert result[0] == "temperature"
+        assert result[2].startswith(
+            "https://terminology.nfdi4chem.de/ts/ontologies/chmo/terms/"
+        )
+        get.assert_called_once()
+
+    @patch("ckanext.scheming.helpers._terminology_config_bool",
+           return_value=True)
+    @patch("ckanext.scheming.helpers.connect_to_redis")
+    @patch("ckanext.scheming.helpers.requests.get")
+    def test_timeout_returns_usable_fallback(
+            self, get, connect_to_redis, config_bool):
+        connect_to_redis.return_value = FakeRedis()
+        get.side_effect = __import__("requests").exceptions.Timeout()
+
+        result = scheming_link_ts(self.curie)
+        repeated = scheming_link_ts(self.curie)
+
+        assert result == (self.curie, "", self.curie, "", self.curie)
+        assert repeated == result
+        get.assert_called_once()
+
+    @patch("ckanext.scheming.helpers._terminology_config_bool",
+           return_value=True)
+    @patch("ckanext.scheming.helpers.connect_to_redis")
+    @patch("ckanext.scheming.helpers.requests.get")
+    def test_repeated_lookup_uses_shared_cache(
+            self, get, connect_to_redis, config_bool):
+        connect_to_redis.return_value = FakeRedis()
+        get.return_value = TerminologyResponse()
+
+        first = scheming_link_ts(self.curie)
+        second = scheming_link_ts(self.curie)
+
+        assert first == second
+        get.assert_called_once()
 
 
 class TestLanguageText(object):

@@ -2,21 +2,31 @@
 
 import re
 import datetime
+import hashlib
 import pytz
 import json
 import six
 import requests
 import urllib.parse
 import logging 
+import time
 
 from jinja2 import Environment
 from ckantoolkit import config, _
+from ckan.lib.redis import connect_to_redis
 
 from ckanapi import LocalCKAN, NotFound, NotAuthorized
 
 all_helpers = {}
 
 log=logging.getLogger(__name__)
+
+TERMINOLOGY_API_URL = (
+    'https://service.tib.eu/ts4tib/api/terms/'
+    'findByIdAndIsDefiningOntology'
+)
+TERMINOLOGY_SEARCH_URL = 'https://terminology.nfdi4chem.de/ts/search?q='
+TERMINOLOGY_CACHE_PREFIX = 'ckanext-scheming:terminology:v1:'
 
 def helper(fn):
     """
@@ -451,6 +461,60 @@ def scheming_flatten_subfield(subfield, data):
             flat[prefix + k] = record[k]
     return flat
 
+def _terminology_config_bool(name, default=False):
+    value = config.get(name, default)
+    if isinstance(value, bool):
+        return value
+    return str(value).strip().lower() in ('1', 'true', 'yes', 'on')
+
+
+def _terminology_fallback(curie):
+    """Return useful display data without contacting the terminology API."""
+    curie = str(curie or '').strip()
+    if curie.startswith(('http://', 'https://')):
+        target_url = curie
+    else:
+        target_url = TERMINOLOGY_SEARCH_URL + urllib.parse.quote(curie, safe='')
+    return curie, '', target_url, '', curie
+
+
+def _terminology_cache_key(curie):
+    digest = hashlib.sha256(curie.encode('utf-8')).hexdigest()
+    return TERMINOLOGY_CACHE_PREFIX + digest
+
+
+def _terminology_cache_get(curie):
+    try:
+        cached = connect_to_redis().get(_terminology_cache_key(curie))
+        if cached is None:
+            return None
+        if not isinstance(cached, six.string_types):
+            cached = cached.decode('utf-8')
+        value = json.loads(cached)
+        if isinstance(value, list) and len(value) == 5:
+            return tuple(value)
+    except Exception as error:
+        log.warning('Terminology cache read failed: %s', error)
+    return None
+
+
+def _terminology_cache_set(curie, value, successful):
+    setting = (
+        'scheming.terminology.success_cache_ttl'
+        if successful else
+        'scheming.terminology.failure_cache_ttl'
+    )
+    default_ttl = 86400 if successful else 300
+    try:
+        ttl = int(config.get(setting, default_ttl))
+        if ttl > 0:
+            connect_to_redis().setex(
+                _terminology_cache_key(curie), ttl, json.dumps(value)
+            )
+    except Exception as error:
+        log.warning('Terminology cache write failed: %s', error)
+
+
 @helper
 def scheming_link_ts(curie):
     """
@@ -462,21 +526,41 @@ def scheming_link_ts(curie):
     This also generates links to NFDI4CHem Terminology Service for the given PURL IRI. 
     """
 
-    global label
-    try:
-        base_url = 'https://service.tib.eu/ts4tib/api/terms/findByIdAndIsDefiningOntology?id='
+    curie = str(curie or '').strip()
+    fallback = _terminology_fallback(curie)
+    if not curie:
+        return fallback
 
-        # Make a single request with a 5-second timeout
-        response = requests.get(base_url + curie, timeout=2)
+    # Dataset rendering must not depend on an external service. Operators may
+    # opt in to live enrichment; cached successes and failures are shared by
+    # all uWSGI workers through CKAN's Redis connection.
+    if not _terminology_config_bool(
+            'scheming.terminology.lookup_enabled', False):
+        return fallback
+
+    cached = _terminology_cache_get(curie)
+    if cached is not None:
+        return cached
+
+    started = time.monotonic()
+    status = 'error'
+    try:
+        timeout = float(config.get('scheming.terminology.timeout', 0.5))
+        response = requests.get(
+            TERMINOLOGY_API_URL,
+            params={'id': curie},
+            timeout=timeout,
+        )
 
         # Check for successful response
         if response.status_code == 204:
-            # Return None values if response code is 204
-            return None, None, None, None, None
+            status = 'not-found'
+            _terminology_cache_set(curie, fallback, successful=False)
+            return fallback
         elif response.status_code != 200:
-            # Log error and return None values for any other unexpected status code
-            log.error(f"Unexpected status code: {response.status_code}")
-            return None, None, None, None, None
+            status = 'http-{}'.format(response.status_code)
+            _terminology_cache_set(curie, fallback, successful=False)
+            return fallback
 
         # Proceed if response is 200
         data = response.json()
@@ -496,16 +580,25 @@ def scheming_link_ts(curie):
 
         ts_url = 'https://terminology.nfdi4chem.de/ts/ontologies/' + defined_from + '/terms/?iri=' + encoded_iri
 
-        return label, description_sentence, ts_url, defined_to, short_form
+        result = label, description_sentence, ts_url, defined_to, short_form
+        status = 'success'
+        _terminology_cache_set(curie, result, successful=True)
+        return result
 
     except requests.exceptions.Timeout:
-        # Handle timeout by logging and returning None values
-        log.error("Request timed out.")
-        return None, None, None, None, None
-    except Exception as e:
-        # Handle any other exceptions
-        log.error(f"An error occurred-TS: {e}")
-        return None, None, None, None, None
+        status = 'timeout'
+        _terminology_cache_set(curie, fallback, successful=False)
+        return fallback
+    except Exception:
+        status = 'error'
+        log.exception('Terminology lookup failed for target=%r', curie)
+        _terminology_cache_set(curie, fallback, successful=False)
+        return fallback
+    finally:
+        log.info(
+            'Terminology lookup target=%r status=%s elapsed=%.3fs',
+            curie, status, time.monotonic() - started,
+        )
 
 
 @helper

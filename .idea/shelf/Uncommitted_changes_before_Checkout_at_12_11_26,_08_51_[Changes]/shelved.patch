@@ -1,0 +1,286 @@
+Index: ckanext/scheming/trr375/trr375_dataset.yaml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># TRR375 dataset metadata schema\n# Use with ckanext-scheming (scheming_datasets).\nscheming_version: 2\ndataset_type: dataset\nabout: TRR375 dataset metadata schema\n\ndataset_fields:\n  # STEP 1 — CKAN core metadata\n  - field_name: title\n    label: Title\n    preset: title\n    required: true\n    form_placeholder: Characterization of AlSi10Mg porous samples\n\n  - field_name: name\n    label: Dataset URL / Slug\n    preset: dataset_slug\n    required: true\n    form_placeholder: characterization-alsi10mg-porous-samples\n\n  - field_name: notes\n    label: Description\n    preset: markdown\n    required: true\n    form_placeholder: Experimental characterization of porous AlSi10Mg specimens...\n\n  - field_name: owner_org\n    label: Organization\n    preset: dataset_organization\n    required: true\n\n#  # Dataset visibility (Public by default)\n#  - field_name: private\n#    label: Visibility\n#    preset: select\n#    required: true\n#    default: 'True'\n#    choices:\n#      - value: 'False'\n#        label: Public\n#      - value: 'True'\n#        label: Private\n#    help_text: Public is selected by default. You can change it to Private if needed.\n\n  - field_name: author\n    label: Author\n    repeating_label: Author\n    repeating_collapse: true\n    repeating_grid: true\n    required: true\n    validators: scheming_required unicode_safe\n # This is for RADAR implementation and for general repeating author. on RADAR this is mapped to Creator.\n    repeating_subfields:\n\n      - field_name: given_name\n        label: Given Name\n        required: true\n\n      - field_name: family_name\n        label: Family Name\n        required: true\n\n      - field_name: orcid\n        label: ORCID\n        required: false\n        help_text: \"ORCID iD of the researcher\"\n\n      - field_name: affiliation\n        label: Affiliation\n        required: false\n\n      - field_name: affiliation_ror\n        label: Affiliation ROR\n        required: false\n        help_text: \"ROR identifier of the affiliated institution\"\n\n  - field_name: tag_string\n    label: Keywords\n    preset: tag_string_autocomplete\n    form_placeholder: porous material, AlSi10Mg, additive manufacturing, X-ray CT\n    help_text: Controlled vocabulary for keywords can be integrated later.\n\n  - field_name: license_id\n    label: License\n    form_snippet: license.html\n    required: true\n    validators: scheming_required unicode_safe\n    help_text: Select a license, for example CC BY 4.0 or CC BY-SA 4.0 (if configured).\n\n  - field_name: maintainer\n    label: Maintainer / Contact Person\n    required: true\n    validators: scheming_required unicode_safe\n    form_placeholder: Max Mustermann\n\n  - field_name: maintainer_email\n    label: Contact Email\n    required: true\n    validators: scheming_required unicode_safe strip_value email_validator\n    form_placeholder: max.mustermann@uni-hannover.de\n\n  - field_name: version\n    label: Dataset Version\n    validators: ignore_missing unicode_safe package_version_validator\n    form_placeholder: '1.0'\n    help_text: Recommended.\n\n  - field_name: url\n    label: Related Web Page\n    display_snippet: link.html\n    validators: ignore_missing unicode_safe\n    form_placeholder: https://www.trrhypo.de/\n\n  # TRR375 project metadata\n  # TRR375 project metadata - Dynamic CKAN group selection\n  - field_name: project_id\n    label: TRR375 Subproject\n    form_snippet: trr375_group_select.html\n    validators: scheming_required unicode_safe\n    required: true\n    form_include_blank_choice: true\n    help_text: Select the TRR375 subproject from the existing CKAN groups.\n\n  - field_name: project_area\n    label: Project Area\n    preset: select\n    required: true\n    form_include_blank_choice: true\n    choices:\n      - {value: A, label: A}\n      - {value: B, label: B}\n      - {value: C, label: C}\n      - {value: S, label: S}\n\n  # FAIR / publication metadata\n  - field_name: doi\n    label: DOI\n    form_placeholder: 10.5281/zenodo.xxxxx\n    validators: ignore_missing unicode_safe\n    help_text: Conditional; add the DOI after publication in an external repository. This field does not generate a DOI.\n\n  - field_name: related_publication\n    label: Related Publication\n    validators: ignore_missing unicode_safe\n    form_placeholder: https://doi.org/10.1016/j...\n    help_text: DOI or URL of a related publication.\n\n  - field_name: related_dataset\n    label: Related Dataset\n    validators: ignore_missing unicode_safe\n    form_placeholder: TRR375-B01-001\n    help_text: Dataset identifier/reference. A CKAN dataset picker or one-to-many relationship needs separate implementation.\n\n  - field_name: funding_reference\n    label: Funding / Project Identifier\n    default: TRR 375\n    validators: ignore_missing unicode_safe\n    help_text: Recommended. Prefilled with TRR 375.\n\n# STEP 2 — CKAN resource metadata\n# IMPORTANT: Resource field names in the workbook are descriptive aliases;\n# native CKAN keys must be url, name, description, format.\nresource_fields:\n  - field_name: url\n    label: File/Resource\n    preset: resource_url_upload\n    required: true\n    upload_label: File/Resource\n\n  - field_name: name\n    label: Resource Name\n    required: true\n    validators: scheming_required unicode_safe\n    form_placeholder: Measurement data\n\n  - field_name: description\n    label: Resource Description\n    preset: markdown\n    required: true\n\n  - field_name: format\n    label: File Format\n    preset: resource_format_autocomplete\n    required: true\n    help_text: For example CSV, TIFF or JSON.\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ckanext/scheming/trr375/trr375_dataset.yaml b/ckanext/scheming/trr375/trr375_dataset.yaml
+--- a/ckanext/scheming/trr375/trr375_dataset.yaml	(revision 33a773d8b6abee5c04a85a89b69507f01a4d53bb)
++++ b/ckanext/scheming/trr375/trr375_dataset.yaml	(date 1792496351643)
+@@ -42,14 +42,13 @@
+ #        label: Private
+ #    help_text: Public is selected by default. You can change it to Private if needed.
+ 
+-  - field_name: author
+-    label: Author
+-    repeating_label: Author
++  - field_name: creators
++    label: Creators
++    repeating_label: Creator
+     repeating_collapse: true
+     repeating_grid: true
+     required: true
+-    validators: scheming_required unicode_safe
+- # This is for RADAR implementation and for general repeating author. on RADAR this is mapped to Creator.
++
+     repeating_subfields:
+ 
+       - field_name: given_name
+@@ -63,7 +62,6 @@
+       - field_name: orcid
+         label: ORCID
+         required: false
+-        help_text: "ORCID iD of the researcher"
+ 
+       - field_name: affiliation
+         label: Affiliation
+@@ -72,7 +70,6 @@
+       - field_name: affiliation_ror
+         label: Affiliation ROR
+         required: false
+-        help_text: "ROR identifier of the affiliated institution"
+ 
+   - field_name: tag_string
+     label: Keywords
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"c495dcf4-ac1b-4735-a93c-6b0a273cccfb\" name=\"Changes\" comment=\"remove tr375: visibility\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/ckanext/scheming/trr375/trr375_dataset.yaml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/ckanext/scheming/trr375/trr375_dataset.yaml\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"HTML File\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"INCOMING_COMMITS_CHECK_STRATEGY\" value=\"FETCH\" />\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"nfdi4chem\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"GitHubPullRequestSearchHistory\">{\n  &quot;lastFilter&quot;: {\n    &quot;state&quot;: &quot;OPEN&quot;,\n    &quot;assignee&quot;: &quot;bhavin2897&quot;\n  }\n}</component>\n  <component name=\"GitSEFilterConfiguration\">\n    <file-type-list>\n      <filtered-out-file-type name=\"LOCAL_BRANCH\" />\n      <filtered-out-file-type name=\"REMOTE_BRANCH\" />\n      <filtered-out-file-type name=\"TAG\" />\n      <filtered-out-file-type name=\"COMMIT_BY_MESSAGE\" />\n    </file-type-list>\n  </component>\n  <component name=\"GithubPullRequestsUISettings\">{\n  &quot;selectedUrlAndAccountId&quot;: {\n    &quot;url&quot;: &quot;https://github.com/TIBHannover/ckanext-scheming.git&quot;,\n    &quot;accountId&quot;: &quot;849dcb34-4f2c-4d7e-bd9c-4840c703f903&quot;\n  }\n}</component>\n  <component name=\"HighlightingSettingsPerFile\">\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/templates/scheming/display_snippets/hyperlink_mT.html\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/templates/base.html\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/assets/styles/scheming.css\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/assets/resource.config\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/assets/webassets.yml\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/templates/scheming/package/snippets/related_identifier.html\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/bioschema4Chem/fancy_type.yaml\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/bioschema4Chem/study4chem.yaml\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/templates/scheming/display_snippets/repeating_subfields.html\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/assets/styles/tooltip-hover.css\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/bioschema4Chem/dataset4chem.yaml\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/templates/scheming/package/snippets/data_page_visuals.html\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/templates/scheming/display_snippets/hyperlink.html\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/bioschema4Chem/project4chem.yaml\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/helpers.py\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/ckan_dataset.yaml\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/templates/scheming/form_snippets/multiple_text.html\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/plugins.py\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/presets.json\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/templates/scheming/snippets/display_field.html\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/templates/scheming/snippets/errors.html\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/templates/scheming/package/snippets/package_form.html\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/templates/snippets/package_item.html\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/templates/scheming/package/snippets/additional_info.html\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/ckanext/scheming/templates/scheming/package/read.html\" root0=\"FORCE_HIGHLIGHTING\" />\n  </component>\n  <component name=\"McpProjectServerCommands\">\n    <commands />\n    <urls />\n  </component>\n  <component name=\"NextEditCompletionFeaturesState\">\n    <decayedCancelled>\n      <entry key=\"MS100\" value=\"1.000452435577095\" />\n      <entry key=\"MS500\" value=\"1.2146150990299436\" />\n      <entry key=\"S2\" value=\"1.966406218403742\" />\n      <entry key=\"S5\" value=\"3.463793134162983\" />\n      <entry key=\"S10\" value=\"4.9767739581588355\" />\n      <entry key=\"S30\" value=\"6.745489142343381\" />\n      <entry key=\"S60\" value=\"7.3536074340705815\" />\n      <entry key=\"M2\" value=\"8.018710368118938\" />\n      <entry key=\"M5\" value=\"10.226723853741202\" />\n      <entry key=\"M10\" value=\"14.947244629495813\" />\n      <entry key=\"M15\" value=\"20.705682009797275\" />\n      <entry key=\"M30\" value=\"36.296096880832415\" />\n      <entry key=\"H1\" value=\"55.75371831545088\" />\n      <entry key=\"H2\" value=\"73.21161704455851\" />\n      <entry key=\"H4\" value=\"85.41922644740441\" />\n      <entry key=\"D1\" value=\"98.12402800845553\" />\n      <entry key=\"W1\" value=\"100.58162543195763\" />\n    </decayedCancelled>\n    <decayedSelected>\n      <entry key=\"MS100\" value=\"0.0\" />\n      <entry key=\"MS500\" value=\"0.0\" />\n      <entry key=\"S2\" value=\"0.0\" />\n      <entry key=\"S5\" value=\"1.3287712923297435E-135\" />\n      <entry key=\"S10\" value=\"3.645231532193452E-68\" />\n      <entry key=\"S30\" value=\"3.3156985507383073E-23\" />\n      <entry key=\"S60\" value=\"5.7582120457005574E-12\" />\n      <entry key=\"M2\" value=\"2.400959865127778E-6\" />\n      <entry key=\"M5\" value=\"0.005931891274160834\" />\n      <entry key=\"M10\" value=\"0.09195337462847186\" />\n      <entry key=\"M15\" value=\"0.24366814431541622\" />\n      <entry key=\"M30\" value=\"0.6780748292154098\" />\n      <entry key=\"H1\" value=\"1.1556471716923578\" />\n      <entry key=\"H2\" value=\"1.5173444525221063\" />\n      <entry key=\"H4\" value=\"1.741187367494678\" />\n      <entry key=\"D1\" value=\"1.9542037111818413\" />\n      <entry key=\"W1\" value=\"1.9933892377699083\" />\n    </decayedSelected>\n    <decayedShown>\n      <entry key=\"MS100\" value=\"0.953069005366345\" />\n      <entry key=\"MS500\" value=\"1.202885776102602\" />\n      <entry key=\"S2\" value=\"1.9616998139963462\" />\n      <entry key=\"S5\" value=\"3.460485967281282\" />\n      <entry key=\"S10\" value=\"4.974383572262679\" />\n      <entry key=\"S30\" value=\"6.744402199209463\" />\n      <entry key=\"S60\" value=\"7.353013321724802\" />\n      <entry key=\"M2\" value=\"8.018382834547612\" />\n      <entry key=\"M5\" value=\"10.232261721394377\" />\n      <entry key=\"M10\" value=\"15.037703342101466\" />\n      <entry key=\"M15\" value=\"20.947075315493983\" />\n      <entry key=\"M30\" value=\"36.97146011737555\" />\n      <entry key=\"H1\" value=\"56.907224525037314\" />\n      <entry key=\"H2\" value=\"74.72760322655313\" />\n      <entry key=\"H4\" value=\"87.15964617022561\" />\n      <entry key=\"D1\" value=\"100.07808971895236\" />\n      <entry key=\"W1\" value=\"102.57499401348453\" />\n    </decayedShown>\n  </component>\n  <component name=\"ProjectColorInfo\">{\n  &quot;customColor&quot;: &quot;&quot;,\n  &quot;associatedIndex&quot;: 2\n}</component>\n  <component name=\"ProjectId\" id=\"24K411XkBzcZeeF63p4GJB9QVaE\" />\n  <component name=\"ProjectLevelVcsManager\">\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\n  </component>\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,\n    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,\n    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,\n    &quot;git-widget-placeholder&quot;: &quot;trr375&quot;,\n    &quot;git.auto.fetch.suggestion.counter&quot;: &quot;1&quot;,\n    &quot;last_opened_file_path&quot;: &quot;/usr/lib/ckan/default/src/ckanext-scheming/ckanext/scheming/public&quot;,\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\n    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\n    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\n    &quot;python.packages.toolwindow.project.migrated.to.right.top.v2&quot;: &quot;true&quot;\n  }\n}</component>\n  <component name=\"RecentsManager\">\n    <key name=\"CopyFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/ckanext/scheming/public\" />\n      <recent name=\"$PROJECT_DIR$/ckanext/scheming/templates/scheming/display_snippets\" />\n      <recent name=\"$PROJECT_DIR$/ckanext/scheming/templates/scheming/form_snippets\" />\n      <recent name=\"$PROJECT_DIR$/ckanext/scheming/templates/scheming/snippets\" />\n      <recent name=\"$PROJECT_DIR$/ckanext/scheming/templates/scheming/package/snippets\" />\n    </key>\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/ckanext/scheming/trr375\" />\n      <recent name=\"$PROJECT_DIR$/ckanext/scheming/templates/scheming/snippets\" />\n      <recent name=\"$PROJECT_DIR$/ckanext/scheming/templates/snippets\" />\n      <recent name=\"$PROJECT_DIR$/ckanext/scheming/bioschema4Chem/\" />\n      <recent name=\"$PROJECT_DIR$/ckanext/scheming/BioSchema4Chem/\" />\n    </key>\n  </component>\n  <component name=\"RunManager\">\n    <configuration default=\"true\" type=\"PythonConfigurationType\" factoryName=\"Python\">\n      <module name=\"ckanext-scheming\" />\n      <option name=\"ENV_FILES\" value=\"\" />\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\n      <option name=\"PARENT_ENVS\" value=\"true\" />\n      <envs>\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\n      </envs>\n      <option name=\"SDK_HOME\" value=\"\" />\n      <option name=\"WORKING_DIRECTORY\" value=\"\" />\n      <option name=\"IS_MODULE_SDK\" value=\"false\" />\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\n      <option name=\"DEBUG_JUST_MY_CODE\" value=\"false\" />\n      <option name=\"RUN_TOOL\" value=\"\" />\n      <option name=\"SCRIPT_NAME\" value=\"\" />\n      <option name=\"PARAMETERS\" value=\"\" />\n      <option name=\"SHOW_COMMAND_LINE\" value=\"false\" />\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\n      <option name=\"MODULE_MODE\" value=\"false\" />\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\n      <option name=\"INPUT_FILE\" value=\"\" />\n      <method v=\"2\" />\n    </configuration>\n    <configuration default=\"true\" type=\"Tox\" factoryName=\"Tox\">\n      <module name=\"ckanext-scheming\" />\n      <option name=\"ENV_FILES\" value=\"\" />\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\n      <option name=\"PARENT_ENVS\" value=\"true\" />\n      <option name=\"SDK_HOME\" value=\"\" />\n      <option name=\"WORKING_DIRECTORY\" value=\"\" />\n      <option name=\"IS_MODULE_SDK\" value=\"false\" />\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\n      <option name=\"DEBUG_JUST_MY_CODE\" value=\"false\" />\n      <option name=\"RUN_TOOL\" value=\"\" />\n      <method v=\"2\" />\n    </configuration>\n    <configuration default=\"true\" type=\"docs\" factoryName=\"Docutils task\">\n      <module name=\"ckanext-scheming\" />\n      <option name=\"ENV_FILES\" value=\"\" />\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\n      <option name=\"PARENT_ENVS\" value=\"true\" />\n      <option name=\"SDK_HOME\" value=\"\" />\n      <option name=\"WORKING_DIRECTORY\" value=\"\" />\n      <option name=\"IS_MODULE_SDK\" value=\"false\" />\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\n      <option name=\"DEBUG_JUST_MY_CODE\" value=\"false\" />\n      <option name=\"RUN_TOOL\" value=\"\" />\n      <option name=\"docutils_input_file\" value=\"\" />\n      <option name=\"docutils_output_file\" value=\"\" />\n      <option name=\"docutils_params\" value=\"\" />\n      <option name=\"docutils_task\" value=\"\" />\n      <option name=\"docutils_open_in_browser\" value=\"false\" />\n      <method v=\"2\" />\n    </configuration>\n    <configuration default=\"true\" type=\"docs\" factoryName=\"Sphinx task\">\n      <module name=\"ckanext-scheming\" />\n      <option name=\"ENV_FILES\" value=\"\" />\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\n      <option name=\"PARENT_ENVS\" value=\"true\" />\n      <option name=\"SDK_HOME\" value=\"\" />\n      <option name=\"WORKING_DIRECTORY\" value=\"\" />\n      <option name=\"IS_MODULE_SDK\" value=\"false\" />\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\n      <option name=\"DEBUG_JUST_MY_CODE\" value=\"false\" />\n      <option name=\"RUN_TOOL\" value=\"\" />\n      <option name=\"docutils_input_file\" value=\"\" />\n      <option name=\"docutils_output_file\" value=\"\" />\n      <option name=\"docutils_params\" value=\"\" />\n      <option name=\"docutils_task\" value=\"\" />\n      <option name=\"docutils_open_in_browser\" value=\"false\" />\n      <method v=\"2\" />\n    </configuration>\n  </component>\n  <component name=\"SharedIndexes\">\n    <attachedChunks>\n      <set>\n        <option value=\"bundled-python-sdk-eff1e8def5f5-5bd6d13a2a75-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-262.10315.174\" />\n      </set>\n    </attachedChunks>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"c495dcf4-ac1b-4735-a93c-6b0a273cccfb\" name=\"Changes\" comment=\"\" />\n      <created>1643365726179</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1643365726179</updated>\n    </task>\n    <task id=\"LOCAL-00093\" summary=\"hid ts url field\">\n      <created>1690532259427</created>\n      <option name=\"number\" value=\"00093\" />\n      <option name=\"presentableId\" value=\"LOCAL-00093\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690532259427</updated>\n    </task>\n    <task id=\"LOCAL-00094\" summary=\"undo hid\">\n      <created>1690532716434</created>\n      <option name=\"number\" value=\"00094\" />\n      <option name=\"presentableId\" value=\"LOCAL-00094\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690532716435</updated>\n    </task>\n    <task id=\"LOCAL-00095\" summary=\"undo hid\">\n      <created>1690535039677</created>\n      <option name=\"number\" value=\"00095\" />\n      <option name=\"presentableId\" value=\"LOCAL-00095\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690535039677</updated>\n    </task>\n    <task id=\"LOCAL-00096\" summary=\"added empty html\">\n      <created>1690535172274</created>\n      <option name=\"number\" value=\"00096\" />\n      <option name=\"presentableId\" value=\"LOCAL-00096\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690535172274</updated>\n    </task>\n    <task id=\"LOCAL-00097\" summary=\"added empty html\">\n      <created>1690535204319</created>\n      <option name=\"number\" value=\"00097\" />\n      <option name=\"presentableId\" value=\"LOCAL-00097\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690535204319</updated>\n    </task>\n    <task id=\"LOCAL-00098\" summary=\"hovertext on hyperlink\">\n      <created>1690536323137</created>\n      <option name=\"number\" value=\"00098\" />\n      <option name=\"presentableId\" value=\"LOCAL-00098\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690536323137</updated>\n    </task>\n    <task id=\"LOCAL-00099\" summary=\"elimnate var_value with text\">\n      <created>1690536429403</created>\n      <option name=\"number\" value=\"00099\" />\n      <option name=\"presentableId\" value=\"LOCAL-00099\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690536429404</updated>\n    </task>\n    <task id=\"LOCAL-00100\" summary=\"label at the dataset list view\">\n      <created>1690549191363</created>\n      <option name=\"number\" value=\"00100\" />\n      <option name=\"presentableId\" value=\"LOCAL-00100\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690549191363</updated>\n    </task>\n    <task id=\"LOCAL-00101\" summary=\"extends missing\">\n      <created>1690549309420</created>\n      <option name=\"number\" value=\"00101\" />\n      <option name=\"presentableId\" value=\"LOCAL-00101\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690549309420</updated>\n    </task>\n    <task id=\"LOCAL-00102\" summary=\"extends missing\">\n      <created>1690549359627</created>\n      <option name=\"number\" value=\"00102\" />\n      <option name=\"presentableId\" value=\"LOCAL-00102\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690549359627</updated>\n    </task>\n    <task id=\"LOCAL-00103\" summary=\"outside scheming html\">\n      <created>1690550289248</created>\n      <option name=\"number\" value=\"00103\" />\n      <option name=\"presentableId\" value=\"LOCAL-00103\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690550289248</updated>\n    </task>\n    <task id=\"LOCAL-00104\" summary=\"ckan extends\">\n      <created>1690550578553</created>\n      <option name=\"number\" value=\"00104\" />\n      <option name=\"presentableId\" value=\"LOCAL-00104\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690550578553</updated>\n    </task>\n    <task id=\"LOCAL-00105\" summary=\"addition and deletion of preset of related_entity\">\n      <created>1690976018320</created>\n      <option name=\"number\" value=\"00105\" />\n      <option name=\"presentableId\" value=\"LOCAL-00105\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690976018321</updated>\n    </task>\n    <task id=\"LOCAL-00106\" summary=\"missing preset\">\n      <created>1690976787609</created>\n      <option name=\"number\" value=\"00106\" />\n      <option name=\"presentableId\" value=\"LOCAL-00106\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690976787609</updated>\n    </task>\n    <task id=\"LOCAL-00107\" summary=\"added missing preset\">\n      <created>1690977908756</created>\n      <option name=\"number\" value=\"00107\" />\n      <option name=\"presentableId\" value=\"LOCAL-00107\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690977908757</updated>\n    </task>\n    <task id=\"LOCAL-00108\" summary=\"added missing preset\">\n      <created>1690978105658</created>\n      <option name=\"number\" value=\"00108\" />\n      <option name=\"presentableId\" value=\"LOCAL-00108\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690978105658</updated>\n    </task>\n    <task id=\"LOCAL-00109\" summary=\"addition of display_snippet as null in additional_table\">\n      <created>1690981344488</created>\n      <option name=\"number\" value=\"00109\" />\n      <option name=\"presentableId\" value=\"LOCAL-00109\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690981344488</updated>\n    </task>\n    <task id=\"LOCAL-00110\" summary=\"repeating subfields UI changes\">\n      <created>1690986341331</created>\n      <option name=\"number\" value=\"00110\" />\n      <option name=\"presentableId\" value=\"LOCAL-00110\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690986341331</updated>\n    </task>\n    <task id=\"LOCAL-00111\" summary=\"test server fancy_type entity\">\n      <created>1690986561318</created>\n      <option name=\"number\" value=\"00111\" />\n      <option name=\"presentableId\" value=\"LOCAL-00111\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690986561318</updated>\n    </task>\n    <task id=\"LOCAL-00112\" summary=\"test server fancy_type entity\">\n      <created>1690986644167</created>\n      <option name=\"number\" value=\"00112\" />\n      <option name=\"presentableId\" value=\"LOCAL-00112\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690986644167</updated>\n    </task>\n    <task id=\"LOCAL-00113\" summary=\"test server fancy_type entity\">\n      <created>1690986668788</created>\n      <option name=\"number\" value=\"00113\" />\n      <option name=\"presentableId\" value=\"LOCAL-00113\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690986668789</updated>\n    </task>\n    <task id=\"LOCAL-00114\" summary=\"test server fancy_type entity\">\n      <created>1690986809811</created>\n      <option name=\"number\" value=\"00114\" />\n      <option name=\"presentableId\" value=\"LOCAL-00114\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690986809811</updated>\n    </task>\n    <task id=\"LOCAL-00115\" summary=\"test server fancy_type entity\">\n      <created>1690986972667</created>\n      <option name=\"number\" value=\"00115\" />\n      <option name=\"presentableId\" value=\"LOCAL-00115\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690986972667</updated>\n    </task>\n    <task id=\"LOCAL-00116\" summary=\"test server fancy_type entity\">\n      <created>1690987448138</created>\n      <option name=\"number\" value=\"00116\" />\n      <option name=\"presentableId\" value=\"LOCAL-00116\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690987448138</updated>\n    </task>\n    <task id=\"LOCAL-00117\" summary=\"reversed\">\n      <created>1690987652869</created>\n      <option name=\"number\" value=\"00117\" />\n      <option name=\"presentableId\" value=\"LOCAL-00117\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690987652869</updated>\n    </task>\n    <task id=\"LOCAL-00118\" summary=\"reversed\">\n      <created>1690987705208</created>\n      <option name=\"number\" value=\"00118\" />\n      <option name=\"presentableId\" value=\"LOCAL-00118\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1690987705208</updated>\n    </task>\n    <task id=\"LOCAL-00119\" summary=\"schemas and html changed as per relationship plugin\">\n      <created>1691156153443</created>\n      <option name=\"number\" value=\"00119\" />\n      <option name=\"presentableId\" value=\"LOCAL-00119\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1691156153444</updated>\n    </task>\n    <task id=\"LOCAL-00120\" summary=\"elminated related field and changed on package view\">\n      <created>1691158810217</created>\n      <option name=\"number\" value=\"00120\" />\n      <option name=\"presentableId\" value=\"LOCAL-00120\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1691158810217</updated>\n    </task>\n    <task id=\"LOCAL-00121\" summary=\"testing on server with fancy_type\">\n      <created>1691159131421</created>\n      <option name=\"number\" value=\"00121\" />\n      <option name=\"presentableId\" value=\"LOCAL-00121\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1691159131421</updated>\n    </task>\n    <task id=\"LOCAL-00122\" summary=\"collapse bar for related types with description\">\n      <created>1692104615661</created>\n      <option name=\"number\" value=\"00122\" />\n      <option name=\"presentableId\" value=\"LOCAL-00122\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1692104615661</updated>\n    </task>\n    <task id=\"LOCAL-00123\" summary=\"measuremnt Technique with IRI\">\n      <created>1700480710055</created>\n      <option name=\"number\" value=\"00123\" />\n      <option name=\"presentableId\" value=\"LOCAL-00123\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1700480710055</updated>\n    </task>\n    <task id=\"LOCAL-00124\" summary=\"removed preset\">\n      <created>1700503071835</created>\n      <option name=\"number\" value=\"00124\" />\n      <option name=\"presentableId\" value=\"LOCAL-00124\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1700503071835</updated>\n    </task>\n    <task id=\"LOCAL-00125\" summary=\"undo the last commit\">\n      <created>1700503299045</created>\n      <option name=\"number\" value=\"00125\" />\n      <option name=\"presentableId\" value=\"LOCAL-00125\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1700503299045</updated>\n    </task>\n    <task id=\"LOCAL-00126\" summary=\"bug fix: removing measurement_technique_iri in addt. table\">\n      <created>1713186700538</created>\n      <option name=\"number\" value=\"00126\" />\n      <option name=\"presentableId\" value=\"LOCAL-00126\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1713186700539</updated>\n    </task>\n    <task id=\"LOCAL-00127\" summary=\"hyperlink for iri updated\">\n      <created>1713363556744</created>\n      <option name=\"number\" value=\"00127\" />\n      <option name=\"presentableId\" value=\"LOCAL-00127\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1713363556745</updated>\n    </task>\n    <task id=\"LOCAL-00128\" summary=\"display units for each measurement\">\n      <created>1713785380828</created>\n      <option name=\"number\" value=\"00128\" />\n      <option name=\"presentableId\" value=\"LOCAL-00128\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1713785380829</updated>\n    </task>\n    <task id=\"LOCAL-00129\" summary=\"generate hovertext info and linking to TS\">\n      <created>1715080320800</created>\n      <option name=\"number\" value=\"00129\" />\n      <option name=\"presentableId\" value=\"LOCAL-00129\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1715080320800</updated>\n    </task>\n    <task id=\"LOCAL-00130\" summary=\"generate hovertext info and linking to TS\">\n      <created>1715083200305</created>\n      <option name=\"number\" value=\"00130\" />\n      <option name=\"presentableId\" value=\"LOCAL-00130\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1715083200305</updated>\n    </task>\n    <task id=\"LOCAL-00131\" summary=\"generate hovertext info and linking to TS\">\n      <created>1715085700387</created>\n      <option name=\"number\" value=\"00131\" />\n      <option name=\"presentableId\" value=\"LOCAL-00131\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1715085700387</updated>\n    </task>\n    <task id=\"LOCAL-00132\" summary=\"generate Hoverinfo and ts-url via CURIE\">\n      <created>1715090403180</created>\n      <option name=\"number\" value=\"00132\" />\n      <option name=\"presentableId\" value=\"LOCAL-00132\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1715090403180</updated>\n    </task>\n    <task id=\"LOCAL-00133\" summary=\"generate Hoverinfo and ts-url via CURIE\">\n      <created>1715092424692</created>\n      <option name=\"number\" value=\"00133\" />\n      <option name=\"presentableId\" value=\"LOCAL-00133\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1715092424692</updated>\n    </task>\n    <task id=\"LOCAL-00134\" summary=\"bold text on hoverInfo\">\n      <created>1715598348082</created>\n      <option name=\"number\" value=\"00134\" />\n      <option name=\"presentableId\" value=\"LOCAL-00134\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1715598348082</updated>\n    </task>\n    <task id=\"LOCAL-00135\" summary=\"color coding for curies\">\n      <created>1715611600436</created>\n      <option name=\"number\" value=\"00135\" />\n      <option name=\"presentableId\" value=\"LOCAL-00135\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1715611600436</updated>\n    </task>\n    <task id=\"LOCAL-00136\" summary=\"Reduce line breaks within hover-info\">\n      <created>1715668909438</created>\n      <option name=\"number\" value=\"00136\" />\n      <option name=\"presentableId\" value=\"LOCAL-00136\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1715668909438</updated>\n    </task>\n    <task id=\"LOCAL-00137\" summary=\"measurement Technique takes CURIE\">\n      <created>1715762369452</created>\n      <option name=\"number\" value=\"00137\" />\n      <option name=\"presentableId\" value=\"LOCAL-00137\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1715762369453</updated>\n    </task>\n    <task id=\"LOCAL-00138\" summary=\"Measurement CURIE replaced by short_form\">\n      <created>1715763447076</created>\n      <option name=\"number\" value=\"00138\" />\n      <option name=\"presentableId\" value=\"LOCAL-00138\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1715763447076</updated>\n    </task>\n    <task id=\"LOCAL-00139\" summary=\"measurement technique displayed as colored label\">\n      <created>1716288482149</created>\n      <option name=\"number\" value=\"00139\" />\n      <option name=\"presentableId\" value=\"LOCAL-00139\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1716288482150</updated>\n    </task>\n    <task id=\"LOCAL-00140\" summary=\"hover-text tooltip css line-height\">\n      <created>1717158097601</created>\n      <option name=\"number\" value=\"00140\" />\n      <option name=\"presentableId\" value=\"LOCAL-00140\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1717158097601</updated>\n    </task>\n    <task id=\"LOCAL-00141\" summary=\"hover-text css resource\">\n      <created>1717591542902</created>\n      <option name=\"number\" value=\"00141\" />\n      <option name=\"presentableId\" value=\"LOCAL-00141\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1717591542902</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"162\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\n    <MESSAGE value=\"bold text on hoverInfo\" />\n    <MESSAGE value=\"color coding for curies\" />\n    <MESSAGE value=\"Reduce line breaks within hover-info\" />\n    <MESSAGE value=\"measurement Technique takes CURIE\" />\n    <MESSAGE value=\"Measurement CURIE replaced by short_form\" />\n    <MESSAGE value=\"measurement technique displayed as colored label\" />\n    <MESSAGE value=\"hover-text tooltip css line-height\" />\n    <MESSAGE value=\"hover-text css resource\" />\n    <MESSAGE value=\"addin jquery error\" />\n    <MESSAGE value=\"change ts tib response code\" />\n    <MESSAGE value=\"molecule-data-source tab additional_info.html\" />\n    <MESSAGE value=\"cleaning\" />\n    <MESSAGE value=\"related molecule on package read\" />\n    <MESSAGE value=\"redo ckan_dataset &amp; custom_org_with_address\" />\n    <MESSAGE value=\"new molecule schema &amp; updated dataset schema\" />\n    <MESSAGE value=\"front-end show relation molecule &amp; dataset\" />\n    <MESSAGE value=\"alternate-names as multiple text field\" />\n    <MESSAGE value=\"additional_info added molecule id\" />\n    <MESSAGE value=\"trr375: add schemas for institute and dataset\" />\n    <MESSAGE value=\"(feat) trr375: add schema for dataset\" />\n    <MESSAGE value=\"(feat) trr375: add helpers for group preset\" />\n    <MESSAGE value=\"fix trr375: rename group snippets html\" />\n    <MESSAGE value=\"fix trr375: helpers\" />\n    <MESSAGE value=\"fix trr375: visibility\" />\n    <MESSAGE value=\"remove tr375: visibility\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"remove tr375: visibility\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 33a773d8b6abee5c04a85a89b69507f01a4d53bb)
++++ b/.idea/workspace.xml	(date 1794469866944)
+@@ -4,7 +4,7 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="c495dcf4-ac1b-4735-a93c-6b0a273cccfb" name="Changes" comment="remove tr375: visibility">
++    <list default="true" id="c495dcf4-ac1b-4735-a93c-6b0a273cccfb" name="Changes" comment="add tr375: repeating authors">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/ckanext/scheming/trr375/trr375_dataset.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/ckanext/scheming/trr375/trr375_dataset.yaml" afterDir="false" />
+     </list>
+@@ -82,61 +82,61 @@
+   </component>
+   <component name="NextEditCompletionFeaturesState">
+     <decayedCancelled>
+-      <entry key="MS100" value="1.000452435577095" />
+-      <entry key="MS500" value="1.2146150990299436" />
+-      <entry key="S2" value="1.966406218403742" />
+-      <entry key="S5" value="3.463793134162983" />
+-      <entry key="S10" value="4.9767739581588355" />
+-      <entry key="S30" value="6.745489142343381" />
+-      <entry key="S60" value="7.3536074340705815" />
+-      <entry key="M2" value="8.018710368118938" />
+-      <entry key="M5" value="10.226723853741202" />
+-      <entry key="M10" value="14.947244629495813" />
+-      <entry key="M15" value="20.705682009797275" />
+-      <entry key="M30" value="36.296096880832415" />
+-      <entry key="H1" value="55.75371831545088" />
+-      <entry key="H2" value="73.21161704455851" />
+-      <entry key="H4" value="85.41922644740441" />
+-      <entry key="D1" value="98.12402800845553" />
+-      <entry key="W1" value="100.58162543195763" />
++      <entry key="MS100" value="1.0133467461902765" />
++      <entry key="MS500" value="1.645678060502485" />
++      <entry key="S2" value="3.800470741004211" />
++      <entry key="S5" value="5.311665673134919" />
++      <entry key="S10" value="6.062801521144511" />
++      <entry key="S30" value="7.4820654868714955" />
++      <entry key="S60" value="12.123270896447947" />
++      <entry key="M2" value="20.848249990331393" />
++      <entry key="M5" value="33.293401801626246" />
++      <entry key="M10" value="42.79453491326894" />
++      <entry key="M15" value="50.2119489480501" />
++      <entry key="M30" value="67.70547141234967" />
++      <entry key="H1" value="88.63392076783687" />
++      <entry key="H2" value="107.28251375095148" />
++      <entry key="H4" value="120.32549312016029" />
++      <entry key="D1" value="133.91930818193524" />
++      <entry key="W1" value="136.55175944588333" />
+     </decayedCancelled>
+     <decayedSelected>
+       <entry key="MS100" value="0.0" />
+       <entry key="MS500" value="0.0" />
+       <entry key="S2" value="0.0" />
+-      <entry key="S5" value="1.3287712923297435E-135" />
+-      <entry key="S10" value="3.645231532193452E-68" />
+-      <entry key="S30" value="3.3156985507383073E-23" />
+-      <entry key="S60" value="5.7582120457005574E-12" />
+-      <entry key="M2" value="2.400959865127778E-6" />
+-      <entry key="M5" value="0.005931891274160834" />
+-      <entry key="M10" value="0.09195337462847186" />
+-      <entry key="M15" value="0.24366814431541622" />
+-      <entry key="M30" value="0.6780748292154098" />
+-      <entry key="H1" value="1.1556471716923578" />
+-      <entry key="H2" value="1.5173444525221063" />
+-      <entry key="H4" value="1.741187367494678" />
+-      <entry key="D1" value="1.9542037111818413" />
+-      <entry key="W1" value="1.9933892377699083" />
++      <entry key="S5" value="1.99606408942993E-148" />
++      <entry key="S10" value="1.4128213225422136E-74" />
++      <entry key="S30" value="2.417477349026974E-25" />
++      <entry key="S60" value="4.916786389975926E-13" />
++      <entry key="M2" value="7.0158734037102E-7" />
++      <entry key="M5" value="0.003626368383272328" />
++      <entry key="M10" value="0.07189638278001921" />
++      <entry key="M15" value="0.20680371448268076" />
++      <entry key="M30" value="0.6246797284244634" />
++      <entry key="H1" value="1.1092135227055435" />
++      <entry key="H2" value="1.486548656019434" />
++      <entry key="H4" value="1.7234273524631138" />
++      <entry key="D1" value="1.9508673752345111" />
++      <entry key="W1" value="1.9929027051130803" />
+     </decayedSelected>
+     <decayedShown>
+-      <entry key="MS100" value="0.953069005366345" />
+-      <entry key="MS500" value="1.202885776102602" />
+-      <entry key="S2" value="1.9616998139963462" />
+-      <entry key="S5" value="3.460485967281282" />
+-      <entry key="S10" value="4.974383572262679" />
+-      <entry key="S30" value="6.744402199209463" />
+-      <entry key="S60" value="7.353013321724802" />
+-      <entry key="M2" value="8.018382834547612" />
+-      <entry key="M5" value="10.232261721394377" />
+-      <entry key="M10" value="15.037703342101466" />
+-      <entry key="M15" value="20.947075315493983" />
+-      <entry key="M30" value="36.97146011737555" />
+-      <entry key="H1" value="56.907224525037314" />
+-      <entry key="H2" value="74.72760322655313" />
+-      <entry key="H4" value="87.15964617022561" />
+-      <entry key="D1" value="100.07808971895236" />
+-      <entry key="W1" value="102.57499401348453" />
++      <entry key="MS100" value="0.9785629610535385" />
++      <entry key="MS500" value="1.6312997875851953" />
++      <entry key="S2" value="3.79013459249411" />
++      <entry key="S5" value="5.305575448748205" />
++      <entry key="S10" value="6.059260561508456" />
++      <entry key="S30" value="7.47931342928753" />
++      <entry key="S60" value="12.117956029316678" />
++      <entry key="M2" value="20.84192108257547" />
++      <entry key="M5" value="33.292477676896276" />
++      <entry key="M10" value="42.86266768526208" />
++      <entry key="M15" value="50.414980826050325" />
++      <entry key="M30" value="68.32667317979933" />
++      <entry key="H1" value="89.74057383889043" />
++      <entry key="H2" value="108.76747495980558" />
++      <entry key="H4" value="122.0480312768685" />
++      <entry key="D1" value="135.8700120942187" />
++      <entry key="W1" value="138.54463839565227" />
+     </decayedShown>
+   </component>
+   <component name="ProjectColorInfo">{
+@@ -188,84 +188,6 @@
+       <recent name="$PROJECT_DIR$/ckanext/scheming/BioSchema4Chem/" />
+     </key>
+   </component>
+-  <component name="RunManager">
+-    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+-      <module name="ckanext-scheming" />
+-      <option name="ENV_FILES" value="" />
+-      <option name="INTERPRETER_OPTIONS" value="" />
+-      <option name="PARENT_ENVS" value="true" />
+-      <envs>
+-        <env name="PYTHONUNBUFFERED" value="1" />
+-      </envs>
+-      <option name="SDK_HOME" value="" />
+-      <option name="WORKING_DIRECTORY" value="" />
+-      <option name="IS_MODULE_SDK" value="false" />
+-      <option name="ADD_CONTENT_ROOTS" value="true" />
+-      <option name="ADD_SOURCE_ROOTS" value="true" />
+-      <option name="DEBUG_JUST_MY_CODE" value="false" />
+-      <option name="RUN_TOOL" value="" />
+-      <option name="SCRIPT_NAME" value="" />
+-      <option name="PARAMETERS" value="" />
+-      <option name="SHOW_COMMAND_LINE" value="false" />
+-      <option name="EMULATE_TERMINAL" value="false" />
+-      <option name="MODULE_MODE" value="false" />
+-      <option name="REDIRECT_INPUT" value="false" />
+-      <option name="INPUT_FILE" value="" />
+-      <method v="2" />
+-    </configuration>
+-    <configuration default="true" type="Tox" factoryName="Tox">
+-      <module name="ckanext-scheming" />
+-      <option name="ENV_FILES" value="" />
+-      <option name="INTERPRETER_OPTIONS" value="" />
+-      <option name="PARENT_ENVS" value="true" />
+-      <option name="SDK_HOME" value="" />
+-      <option name="WORKING_DIRECTORY" value="" />
+-      <option name="IS_MODULE_SDK" value="false" />
+-      <option name="ADD_CONTENT_ROOTS" value="true" />
+-      <option name="ADD_SOURCE_ROOTS" value="true" />
+-      <option name="DEBUG_JUST_MY_CODE" value="false" />
+-      <option name="RUN_TOOL" value="" />
+-      <method v="2" />
+-    </configuration>
+-    <configuration default="true" type="docs" factoryName="Docutils task">
+-      <module name="ckanext-scheming" />
+-      <option name="ENV_FILES" value="" />
+-      <option name="INTERPRETER_OPTIONS" value="" />
+-      <option name="PARENT_ENVS" value="true" />
+-      <option name="SDK_HOME" value="" />
+-      <option name="WORKING_DIRECTORY" value="" />
+-      <option name="IS_MODULE_SDK" value="false" />
+-      <option name="ADD_CONTENT_ROOTS" value="true" />
+-      <option name="ADD_SOURCE_ROOTS" value="true" />
+-      <option name="DEBUG_JUST_MY_CODE" value="false" />
+-      <option name="RUN_TOOL" value="" />
+-      <option name="docutils_input_file" value="" />
+-      <option name="docutils_output_file" value="" />
+-      <option name="docutils_params" value="" />
+-      <option name="docutils_task" value="" />
+-      <option name="docutils_open_in_browser" value="false" />
+-      <method v="2" />
+-    </configuration>
+-    <configuration default="true" type="docs" factoryName="Sphinx task">
+-      <module name="ckanext-scheming" />
+-      <option name="ENV_FILES" value="" />
+-      <option name="INTERPRETER_OPTIONS" value="" />
+-      <option name="PARENT_ENVS" value="true" />
+-      <option name="SDK_HOME" value="" />
+-      <option name="WORKING_DIRECTORY" value="" />
+-      <option name="IS_MODULE_SDK" value="false" />
+-      <option name="ADD_CONTENT_ROOTS" value="true" />
+-      <option name="ADD_SOURCE_ROOTS" value="true" />
+-      <option name="DEBUG_JUST_MY_CODE" value="false" />
+-      <option name="RUN_TOOL" value="" />
+-      <option name="docutils_input_file" value="" />
+-      <option name="docutils_output_file" value="" />
+-      <option name="docutils_params" value="" />
+-      <option name="docutils_task" value="" />
+-      <option name="docutils_open_in_browser" value="false" />
+-      <method v="2" />
+-    </configuration>
+-  </component>
+   <component name="SharedIndexes">
+     <attachedChunks>
+       <set>
+@@ -625,7 +547,7 @@
+       <option name="project" value="LOCAL" />
+       <updated>1717591542902</updated>
+     </task>
+-    <option name="localTasksCounter" value="162" />
++    <option name="localTasksCounter" value="163" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -644,7 +566,6 @@
+   </component>
+   <component name="VcsManagerConfiguration">
+     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+-    <MESSAGE value="bold text on hoverInfo" />
+     <MESSAGE value="color coding for curies" />
+     <MESSAGE value="Reduce line breaks within hover-info" />
+     <MESSAGE value="measurement Technique takes CURIE" />
+@@ -669,6 +590,7 @@
+     <MESSAGE value="fix trr375: helpers" />
+     <MESSAGE value="fix trr375: visibility" />
+     <MESSAGE value="remove tr375: visibility" />
+-    <option name="LAST_COMMIT_MESSAGE" value="remove tr375: visibility" />
++    <MESSAGE value="add tr375: repeating authors" />
++    <option name="LAST_COMMIT_MESSAGE" value="add tr375: repeating authors" />
+   </component>
+ </project>
+\ No newline at end of file
